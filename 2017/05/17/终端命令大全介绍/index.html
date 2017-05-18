@@ -1,0 +1,736 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终端命令大全介绍">
+<meta property="og:url" content="https://qinsmoon-kz.github.io/2017/05/17/终端命令大全介绍/index.html">
+<meta property="og:site_name" content="on my way!">
+<meta property="og:description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
+<meta property="og:updated_time" content="2017-05-18T09:22:45.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="终端命令大全介绍">
+<meta name="twitter:description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinsmoon-kz.github.io/2017/05/17/终端命令大全介绍/"/>
+
+
+
+
+
+  <title> 终端命令大全介绍 | on my way! </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">on my way!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">左手倒影，右手年华</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qinsmoon-kz.github.io/2017/05/17/终端命令大全介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="on my way!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                终端命令大全介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T17:32:34+08:00">
+                2017-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="OSX-的文件系统"><a href="#OSX-的文件系统" class="headerlink" title="OSX 的文件系统"></a>OSX 的文件系统</h2><p>OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。<br>你在桌面上看到的硬盘都挂在 /Volumes 下。<br>比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？<br>在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。<br>根目录位置是 / 核心 Mach_kernel 就在这里，<br>驱动所在位置 /Systme/Library/Extensions<br>用户文件夹位置 /User/用户名<br>桌面的位置 /User/用户名/Desktop<br>文件通配符为星号 *<br>注意：在 Unix系统中是区别大小写字符的，A.txt 不等于 a.txt。<br>根目录标志 / 不是可有可无，cd /System 表示转到跟目录下的System中，而cd System 表示转到当前目录下的 System中<br><a id="more"></a><br>——————————————————————————————————————————————<br>如何进入命令行操作模式<br>再图形界面下，用finder 打开 应用程序 》实用程序》终端<br>如果连图形界面都进不去了（比如安错了显示驱动），开机时按 F8，用－s参数启动，然后输入命令 mount -uw / </p>
+<p>获得权限<br>为了防止误操作破坏系统，再用户状态下时没有权限操作系统重要文件的，所以先要取得root权限<br>sudo －s<br>然后输入密码，输入密码时没有任何回显，连星号都没有，只管输完回车就行了。<br>—————————————————————————————————————————————— </p>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>列出文件<br>ls 参数 目录名<br>例: 想看看跟目录下有什么，<br>ls /<br>想看看驱动目录下有什么，<br>ls /System/Library/Extensions<br>参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件<br>转换目录<br>cd<br>例：想到驱动目录下溜达一圈<br>cd /System/Library/Extensions<br>建立新目录<br>mkdir 目录名<br>例：在驱动目录下建一个备份目录 backup<br>mkdir /System/Library/Extensions/backup<br>在桌面上建一个备份目录 backup<br>mkdir /User/用户名/Desktop/backup<br>拷贝文件<br>cp 参数 源文件 目标文件<br>例：想把桌面的Natit.kext 拷贝到驱动目录中<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions<br>参数R表示对目录进行递归操作，kext在图形界面下看起来是个文件，实际上是个文件夹。<br>把驱动目录下的所有文件备份到桌面backup<br>cp -R /System/Library/Extensions/* /User/用户名/Desktop/backup<br>删除文件<br>rm 参数 文件<br>例：想删除驱动的缓存<br>rm -rf /System/Library/Extensions.kextcache<br>rm -rf /System/Library/Extensions.mkext<br>参数－rf 表示递归和强制，千万要小心使用，如果执行了 rm -rf / 你的系统就全没了 </p>
+<p>移动文件<br>mv 文件<br>例：想把AppleHDA.Kext 移到桌面<br>mv /System/Library/Extensions/AppleHDA.kext /User/用户名/Desktop<br>想把AppleHDA.Kext 移到备份目录中<br>mv /System/Library/Extensions/AppleHDA.kext /System/Library/Extensions/backup<br>更改文件权限<br>chmod 参数 权限 文件<br>例：把驱动目录下所有文件设定到root读写，其他用户只读<br>chmod -R 755 /System/Library/Extensions<br>参数R 表示递归，755表示各用户的权限<br>更改文件属主<br>chown 参数 用户:组 文件<br>例：把驱动目录下的所有文件属主改成根用户<br>chown -R root:wheel /System/Library/Extensions<br>参数R 表示递归操作<br>修复整个系统中文件的权限<br>diskutil repairpermissions /<br>严格的说这不是一个unix 命令，而是osx一个软件，记得修改或添加的驱动就执行一次。<br>文本编辑<br>nano 文件名<br>例：编辑natit Info.plist<br>nano /System/Library/Extensions/Natit.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>另一个文本编辑软件是 vi，操作有些古怪，熟了是非常好用的，而且在所有类Unix系统中都它，走遍天下都不怕了。<br>运行脚本命令<br>sh 脚本文件名<br>例 修改驱动后所有需要的操作存成一个脚本，以后修改了驱动后只要运行一次这个脚本就可以了，方便吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1. 终端中运行nano /clean </div><div class="line">2. 把下列代码粘贴到 nano 中 </div><div class="line">rm -rf /System/Library/Extensions.kextcache </div><div class="line">rm -rf /System/Library/Extensions.mkext </div><div class="line">chown -R root:wheel /System/Library/Extensions </div><div class="line">chmod -R 755 /System/Library/Extensions </div><div class="line">diskutil repairpermissions / </div><div class="line">kextcache -k /System/Library/Extensions/ </div><div class="line">3. Ctrl ＋O 存盘，Ctrl＋X 退出 </div><div class="line">4. 以后只要动了驱动，就在终端中运行一次 sh /clean</div></pre></td></tr></table></figure></p>
+<p>———————————————————————————————————— </p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>用 Tab 键自动补齐命令<br>比如想到 /System 目录中去，输入 cd /Sy 然后按一下Tab 键，命令就会自动补齐成 cd /System<br>操作带名字中带有空格的文件和目录<br>空格在命令中写成 空格， 比如要进入 My Documents，命令为 cd My Documents<br>查看命令的详细帮助<br>man 命令名<br>比如要看看 ls 命令的详细用法，执行 man ls<br>———————————————————————————————————— </p>
+<h2 id="典型操作流程"><a href="#典型操作流程" class="headerlink" title="典型操作流程"></a>典型操作流程</h2><p>(假设已经制作好清理脚本，记得每次操作前 sudo -s 获得系统权限)<br>假设下载了一个显卡驱动 Natit.zip，在桌面解压得到了一个Natit.kext，该怎么做呢？<br>为了保险起见，先把所有驱动备份了再说<br>mkdir /User/用户名/Desktop/backup 在桌面上建立备份文件夹<br>cp -R /System/Library/Extensions/* /User/用户名/Desktop/backup 备份驱动文件<br>现在可以安心安装了<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions 把它 拷贝到系统驱动目录位置<br>sh /clean 执行清理脚本，操作完成<br>重新开机失败，进不去桌面了，发现不应该安这个驱动，怎么恢复呢？<br>开机按F8，用 -s 参数启动<br>执行 mount -uw /<br>rm -rf /User/用户名/Desktop/Natit.kext 删除这个驱动<br>sh /clean 执行清理脚本，操作完成<br>重启，回到原先状态了，不死心啊，没有特效怎么行呢，又听说需要修改 Natit的 Info. plist 文件才行，好，再来<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions 把它 拷贝到系统驱动目录位置<br>nano /System/Library/Extensions/Natit.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>sh /clean 执行清理脚本，操作完成<br>重启，这回对了，显卡特效都有了，该弄声卡了，天知道会出什么事，得把现有成果保护好。<br>mkdir /User/用户名/Desktop/gooddrivers 专为有效驱动建个目录<br>cp -R /System/Library/Extensions/Natit.kext /User/用户名/Desktop/gooddrivers 备份<br>这个声卡要求把 AppleHDA.kext 删除和编辑 AppleAzaliaAudio.kext中的Info.plist 文件，谁知道以后会不会还用AppleHDA呢，不如暂时禁用吧。<br>mkdir /System/Library/Extensions/disabled 建立个禁用目录<br>mv /System/Library/Extensions/AppleHDA.kext /System/Library/Extensions/disabled 移动过去<br>nano /System/Library/Extensions/Natit.kext/AppleAzaliaAudio.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>sh /clean 执行清理脚本，操作完成<br>成功了，也把修改好的驱动备份一下把<br>复制内容到剪贴板代码: </p>
+<h2 id="以下是unix的命令行-供参考"><a href="#以下是unix的命令行-供参考" class="headerlink" title="以下是unix的命令行,供参考"></a>以下是unix的命令行,供参考</h2><p>目录操作<br>命令名<br>功能描述<br>使用举例<br>mkdir<br>创建一个目录<br>mkdir dirname<br>rmdir<br>删除一个目录<br>rmdir dirname<br>mvdir<br>移动或重命名一个目录<br>mvdir dir1 dir2<br>cd<br>改变当前目录<br>cd dirname<br>pwd<br>显示当前目录的路径名<br>pwd<br>ls<br>显示当前目录的内容<br>ls -la<br>dircmp<br>比较两个目录的内容<br>dircmp dir1 dir2<br>文件操作<br>命令名<br>功能描述<br>使用举例<br>cat<br>显示或连接文件<br>cat filename<br>pg<br>分页格式化显示文件内容<br>pg filename<br>more<br>分屏显示文件内容<br>more filename<br>od<br>显示非文本文件的内容<br>od -c filename<br>cp<br>复制文件或目录<br>cp file1 file2<br>rm<br>删除文件或目录</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/28/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.jpg"
+               alt="zhangke" />
+          <p class="site-author-name" itemprop="name">zhangke</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录下日常的点点滴滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qinsmoon-kz" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ZK-0817" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSX-的文件系统"><span class="nav-number">1.</span> <span class="nav-text">OSX 的文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">2.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小技巧"><span class="nav-number">3.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型操作流程"><span class="nav-number">4.</span> <span class="nav-text">典型操作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是unix的命令行-供参考"><span class="nav-number">5.</span> <span class="nav-text">以下是unix的命令行,供参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangke</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
