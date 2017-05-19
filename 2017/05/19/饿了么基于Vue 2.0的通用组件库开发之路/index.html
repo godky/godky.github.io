@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Element 是由饿了么UED设计、饿了么大前端开发的一套基于 Vue 2.0 的桌面端组件库。今天我们要分享的就是开发 Element 的一些心得。一、设计目的 大部分项目起源都是源于业务方的需求，Element 也是一样。随着公司的业务发展，内部开始衍生出很多后台系统，UED 部门也接到越来越多的设计需求。分析这整个过程，我们发现如下问题：日渐增多的后台产品设计需求 设计资源有限，没办法支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="饿了么基于Vue 2.0的通用组件库开发之路">
+<meta property="og:url" content="https://qinsmoon-kz.github.io/2017/05/19/饿了么基于Vue 2.0的通用组件库开发之路/index.html">
+<meta property="og:site_name" content="on my way!">
+<meta property="og:description" content="Element 是由饿了么UED设计、饿了么大前端开发的一套基于 Vue 2.0 的桌面端组件库。今天我们要分享的就是开发 Element 的一些心得。一、设计目的 大部分项目起源都是源于业务方的需求，Element 也是一样。随着公司的业务发展，内部开始衍生出很多后台系统，UED 部门也接到越来越多的设计需求。分析这整个过程，我们发现如下问题：日渐增多的后台产品设计需求 设计资源有限，没办法支持">
+<meta property="og:updated_time" content="2017-05-19T08:04:49.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="饿了么基于Vue 2.0的通用组件库开发之路">
+<meta name="twitter:description" content="Element 是由饿了么UED设计、饿了么大前端开发的一套基于 Vue 2.0 的桌面端组件库。今天我们要分享的就是开发 Element 的一些心得。一、设计目的 大部分项目起源都是源于业务方的需求，Element 也是一样。随着公司的业务发展，内部开始衍生出很多后台系统，UED 部门也接到越来越多的设计需求。分析这整个过程，我们发现如下问题：日渐增多的后台产品设计需求 设计资源有限，没办法支持">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinsmoon-kz.github.io/2017/05/19/饿了么基于Vue 2.0的通用组件库开发之路/"/>
+
+
+
+
+
+  <title> 饿了么基于Vue 2.0的通用组件库开发之路 | on my way! </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">on my way!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">左手倒影，右手年华</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qinsmoon-kz.github.io/2017/05/19/饿了么基于Vue 2.0的通用组件库开发之路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="on my way!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                饿了么基于Vue 2.0的通用组件库开发之路
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T15:59:54+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Element 是由饿了么UED设计、饿了么大前端开发的一套基于 Vue 2.0 的桌面端组件库。今天我们要分享的就是开发 Element 的一些心得。<br>一、设计目的</p>
+<p>大部分项目起源都是源于业务方的需求，Element 也是一样。随着公司的业务发展，内部开始衍生出很多后台系统，UED 部门也接到越来越多的设计需求。分析这整个过程，我们发现如下问题：<br>日渐增多的后台产品设计需求</p>
+<p>设计资源有限，没办法支持所有业务线</p>
+<p>公司内部诸多后台产品使用体验不一致</p>
+<p>于是我们决定：<br>设计一套后台支撑框架，提升后台系统的可用性和一致性</p>
+<p>套用此框架，即使没有设计师参与，也能让产品或开发设计出一套好用的后台系统<br><a id="more"></a><br>二、设计阶段</p>
+<p>下面简单说一下设计 Element 经历的几个阶段。<br>了解业务并熟悉公司内各后台产品，寻找业务上的共性问题<br>设计的目的是为了业务服务。第一步我们从内部系统开始入手，了解公司内部在使用的各种后台系统，将其组件抽象剥离，寻找共性特征。<br>专注业务组件设计<br>总结了公司不同系统不同组件的使用情况后，我们打算从业务组件入手，因为这部份是由公司特殊需求衍生的解决方案。解决了这些棘手的问题，也能给其他后台产品带来好的设计引导。<br>寻求开发支持<br>到这一步，我们开始寻找公司内部的开发团队，并在这时才得知不同团队里使用着不同的前端框架，有 Vue、React、Angular 等。<br>与大前端合作<br>大前端作为独立的前端团队，有能力开发底层的工具去服务不同业务，并且 Vue 也是一套年轻且发展方向很好的一个技术栈。UED 与大前端的合作一拍即合。<br>方向转变，专注于基础组件<br>跟大前端接触后，才发现最开始的方向并不正确，因为业务变化过快，即使有通用的业务组件，也很难跟上需求的变化，而基础组件才是所有开发团队都需要的通用组件。这时候我们开始把方向调整为基础组件的设计。<br>组件交互完成，进行视觉封装，并搭建主体网站<br>前期的设计工作主要是由交互设计师进行设计，等确认完所有组件的功能和交互后，开始进行视觉阶段，这中间包括制定颜色、字体等各类规范，也同时进行主体网站的设计。</p>
+<p>输出 UI Kit 文件，统一设计规范</p>
+<p>第一版网站设计，此处的「特殊组件」即业务组件。</p>
+<p>网站二次设计<br>第一版网站上线后视觉效果并不好，我们内部进行了调整，再次上线后就是大家现在看到的样子。</p>
+<p>设计过程简单来说就经历了这几个阶段，如还有问题可以继续交流，下面进入开发阶段。<br>三、开发目的</p>
+<p>后台系统缺乏一套完整的基础组件库</p>
+<p>Vue 在公司内部是一个比较年轻的技术栈，希望做一些基础设施的建设</p>
+<p>提升公司在技术社区的影响力</p>
+<p>四、开发流程</p>
+<p>进入开发阶段后，在总体架构方面我们做了一些尝试，下面按照时间顺序分享给大家：<br>1.如何与设计师进行配合</p>
+<p>经过项目初期开发和设计的磨合，我们提炼了一套组件开发流程：<br>根据交互稿和视觉稿进行开发，期间与设计师保持沟通</p>
+<p>开发完成后自测，之后提交设计师验收</p>
+<p>设计师提出修改意见，根据意见进行修改</p>
+<p>完成组件开发，为网站编写例子和文档</p>
+<p>2.如何管理多组件项目</p>
+<p>在开发之初，我们就在思考如何降低组件的耦合度，确保组件可以独立工作。这样的目的是可以保证组件可以依赖其他组件、让用户只加载其中几个组件甚至在安装时只安装需要的组件。最先想到的做法是一个组件单独一个仓库，而组件库项目就是把组件作为依赖引入。<br>但是由于人手不足，这样的机制导致开发太耗时间，每个组件都需要单独维护和打包，同时还要维护组件库项目的各依赖的版本号。我们只能另寻方案。后来参考了 babel 项目的管理方式：所有子项目放在 packages/<br>目录里，一个子项目可以当作一个独立的仓库。通过 lerna 来管理子项目的依赖和发布。<br>结合自身项目的特点以及 babel 的这套机制，我们重构了目录结构：组件可单独作为一个项目放在 packages/<br>，共用函数放在 src/<br>里。最后的打包结果会将整个组件打包成一个文件、组件分别打包成独立文件，同时发布时还将发布组件库和独立组件，满足不同用户的使用需求。</p>
+<p>3.如何解决自定义主题</p>
+<p>开发一套组件库就离不开定制主题的需求。类名要足够友好，尽量避免存在样式层级嵌套，这样在直接覆盖样式或者单独写一套主题都会方便许多。所以我们采用 BEM 的方式管理类名，同时尽可能将属性值用变量代替，维护一份变量文件便于直接修改变量就能定制一套主题。<br>考虑到不同用户的使用习惯，我们没有选用 Less 或 Sass 之类的有各自风格的预处理器，而是选用了更接近未来标准的 CSS4 风格的语法，用 PostCSS 和整合了 postcss-bem 和 postcss-cssnext 等插件的 postcss-salad 开发。<br>为了降低用户自定义主题的上手成本，我们还提供了命令行工具指导用户快速自定义一套主题。<br>4.如何提供一份直观的文档</p>
+<p>文档不仅是让用户看起来直观，也要让编写者写起来直观。所以最简单的方式是用 Markdown 写文档。但是就会产生另一个问题：如何在文档里写可运行的示例？常规的做法是把文档写在 Vue 文件里，这样就可以在里面调用其他组件，但是这样就违背了写「直观」文档的初衷。<br>经过几番尝试，结合 Vue 的特点。我们写了一套处理 Markdown 文件的 webpack loader，可以将 Markdown 转成 Vue 文件，不仅降低了文档的维护成本，同时也将文档里运行组件示例变成可能。<br>5.多语言官网如何配置和管理</p>
+<p>Element 在立项之初其实并没有考虑国际化的问题。项目开源之后，我们陆续收到了一些外国开发者的反馈，希望能够增加英文文档。不久之后，国内的一个翻译团队主动联系到了我们，为 Element 贡献了整套英文文档。<br>有了英文文档就需要有英文网站，这就需要对官网的现有结构进行修改和升级；同时为了面向未来，需要官网能够兼容除英语外的其他多语言。为此我们做了以下工作：<br>（1）路由<br>官网的路由是根据一个记录了导航信息的 json<br>文件自动生成的。因此需要在这个 json<br>文件中添加对应于其他语言的字段，并且根据新的数据结构修改路由生成的逻辑。<br>（2）页面<br>官网中除了文档外，还有一些介绍性质的页面。这些页面中文字比较多，如果人工管理每种语言的页面，若需要修改则必须去每个页面相应的位置进行编辑，有些繁琐。我们的做法是：每个页面对应一个模板，模板中的文字全部抽取到一个语言配置文件中，并且写了一个脚本生成最终的页面。这样在需要修改时，只需在语言配置文件中编辑对应的字段即可。<br>（3）网站组件<br>对于 header<br>、footer<br>等通用的页面组件，我们采取了和上面类似的策略。但由于组件内的文字较少，于是没有再使用模板，而是通过路由判断应该显示何种语言。</p>
+<p>中英文网站的显示效果</p>
+<p>至此，我们也逐渐完善了技术栈。用 ES2015 和 CSS4 作开发语言、Lerna 负责管理组件、用 Karma 搭配 Mocha 和 Chai 等工具在 Travis CI 里做持续集成测试，最后用 Markdown 结合 Vue 写文档。我们甚至还在 CI 里实现了自动部署网站和推送主题仓库代码等功能，提升了不少开发效率。</p>
+<p>6.开发过程中遇到的问题</p>
+<p>具体到组件层面，在开发的过程中不可避免地会遇到一些问题。下面是我们的一些应对策略，希望能够抛砖引玉，引发大家的思考和讨论。<br>如何应对父子组件间事件派发机制的改变<br>在 Vue 2.0 中，用于父子组件间事件通信的 $dispatch<br>和 $broadcast<br>被移除了。官方的考虑是，基于组件树结构的事件流方式让人难以理解，并且在组件结构扩展的过程中会变得越来越脆弱。但是类似 Element 这样的组件库有几个特点：首先，父子组件间互相通信的场景非常常见，比如在一个带有验证功能的表单里，每个表单项在 change<br>或 blur<br>时需要通知表单组件进行校验；其次，组件的结构相对来说比较固定。<br>出于以上考虑，我们实现了简化版的 dispatch<br>和 broadcast<br>，并把它们包装成了一个 mixin<br>，方便在需要时调用。其中的 dispatch<br>代码如下：<br>dispatch(componentName, eventName, params) { var parent = this.$parent || this.$root; var name = parent.$options.componentName; while (parent &amp;&amp; (!name || name !== componentName)) { parent = parent.$parent; if (parent) { name = parent.$options.componentName; } } if (parent) { parent.$emit.apply(parent, [eventName].concat(params)); } }</p>
+<p>可以看出，我们的实现需要在调用时传入 componentName<br>（在各个组件中定义），这样就确保了事件只会在正确的组件中触发。<br>是否需要为用户代理自定义组件上的原生事件<br>在 Vue 2.0 中的自定义组件上使用 v-on<br>只会监听自定义事件（即组件用 $emit<br>触发的事件）。如果要监听原生事件，必须使用 .native<br>修饰符：</p>
+<p><mt-component @click.native="handleClick"></mt-component></p>
+<p>这样一来，很多不太熟悉 Vue 2.0 语法的用户会发现给 Element 的组件绑定原生事件总是不生效。事实上，我们从开源以来收到的 issue 里被问得最多的一个问题是：如何给 Button<br>组件绑定 click<br>事件？<br>事实上我们只需要添加一行代码就能解决问题，但是关于是否需要让用户可以直接监听原生事件这件事在我们内部有两种不同的观点：一边认为应该遵循 Vue 的设计思想，原生事件要加 native；另一边认为 button 最常用的就是 click 事件，帮助用户做这件事可以降低学习成本。后来我们专门咨询了尤雨溪本人，他的观点是，对于一些组件的常用事件，可以允许用户直接监听原生事件，同时在文档中说明哪些事件可以直接监听，哪些事件需要加 .native<br>修饰符。最后我们决定从易用性的角度出发，让用户在使用 Button<br>组件时可以监听原生 click<br>事件，因为对于桌面端来说，Button<br>在绝大部分场景下都是需要监听点击事件的。 现在的 Button<br>支持以下两种写法：</p>
+<p><el-button @click.native="handleClick">Click Me!</el-button> <el-button @click="handleClick">Click Me!</el-button></p>
+<p>版本迭代的过程中，若 API 发生变化，如何友好地提示用户<br>在历次迭代中，我们会尽量保持 API 的一致。但是在一些万不得已的情况下，需要对 API 作出一些更新。对于老版本的用户而言，如果使用了被移除的 API，升级到新版后会出现一些意料之外的报错信息。为了友好地帮助用户尽快找到报错的来源，我们编写了一个 mixin<br>，当组件的 API 发生变化时，在组件中引入这个 mixin<br>并列出变化前后的字段名即可。<br>mixin<br>的核心代码为：<br>const { props, events } = this.getMigratingConfig(); const { data, componentOptions } = this.$vnode; const definedProps = data.attrs || {}; const definedEvents = componentOptions.listeners || {}; for (let propName in definedProps) { if (definedProps.hasOwnProperty(propName) &amp;&amp; props[propName]) { console.warn([Element Migrating][Attribute]: ${props[propName]}); } } for (let eventName in definedEvents) { if (definedEvents.hasOwnProperty(eventName) &amp;&amp; events[eventName]) { console.warn([Element Migrating][Event]: ${events[eventName]}); } }</p>
+<p>引用了这个 mixin<br>的组件需要在 methods<br>中添加一个名为 getMigratingConfig<br>的方法，返回一个包含发生变化的 API 字段名和对应提示信息的对象：<br>getMigratingConfig() { return { props: { ‘selection-mode’: ‘Table: selection-mode has been removed.’ }, events: { cellclick: ‘Table: cellclick has been renamed to cell-click.’ } }; }</p>
+<p>五、issue 处理方式</p>
+<p>我们选择使用 Tower 来配合 GitHub 进行 issue 的追踪和处理。首先在 Tower 上建立几个清单：Plan、Design、Develop 和 Release。随后具体的操作流程如下：<br>从各渠道收集反馈</p>
+<p>若不需设计，则由开发回复</p>
+<p>若需设计跟进，则在 GitHub 上添加标签 design<br>，并在 Tower 的 Plan 清单中添加相应任务</p>
+<p>开始处理任务后，为 GitHub 的对应 issue 添加 working in progress<br>标签，同时把任务拖进 Tower 的 Design 清单</p>
+<p>设计完成后，开发接手，同时把任务拖进 Develop 清单</p>
+<p>开发完成，经过设计师验收通过后将改动推送至 GitHub 仓库，关闭相应 issue，最后将任务拖进 Release 清单</p>
+<p>六、总结</p>
+<p>Element 从立项至今已经走过了五个月的时间。总的来说，这段时间就是一个不断发现问题和解决问题的过程，也是每个参与者自身成长的过程。开发时 Vue 2.0 正处于 RC 阶段，我们随着它的版本迭代踩到了不少坑，同时也给 Vue 提了一些 issue，并且都得到了 Vue 团队的处理。在此向Vue 团队的专业精神表示感谢。<br>自从 9 月开源以来，在社区的帮助下，Element 逐渐成熟，我们也在今天发布了它的第一个正式版本。希望越来越多的人能够参与进来，和我们一起把 Element 做得更好。<br>七、参考资料</p>
+<p><a href="https://github.com/babel/babel" target="_blank" rel="external">https://github.com/babel/babel</a></p>
+<p><a href="https://github.com/lerna/lerna" target="_blank" rel="external">https://github.com/lerna/lerna</a></p>
+<p><a href="https://github.com/ElemeFE/postcss-salad" target="_blank" rel="external">https://github.com/ElemeFE/postcss-salad</a></p>
+<p><a href="https://github.com/QingWei-Li/vue-markdown-loader" target="_blank" rel="external">https://github.com/QingWei-Li/vue-markdown-loader</a></p>
+<p><a href="https://github.com/ElemeFE/cooking" target="_blank" rel="external">https://github.com/ElemeFE/cooking</a></p>
+<p>精彩问答</p>
+<p>淀粉提问：Element官网是多少？<br>Element开发团队：官网是 <a href="http://element.eleme.io" target="_blank" rel="external">http://element.eleme.io</a><br>淀粉提问：如何修改样式？<br>Element开发团队：简单的样式可以通过覆盖来修改；对于大规模的自定义，我们提供了一套自定义主题的工具，文档看这里：<a href="https://github.com/ElemeFE/element/blob/master/custom-theme.md" target="_blank" rel="external">https://github.com/ElemeFE/element/blob/master/custom-theme.md</a> 。简单来说，通过修改样式变量、编译主题、引入主题，就可以实现自定义主题。<br>淀粉提问：Vue的作者给出了一套学习Vue路径，那Element是否有阅读源码的路径呢，怎么样才可以较为方便的理解源码，并且在基础组件不能满足自己业务的时候写出自己的组件呢？<br>Element开发团队：阅读源码的话，可以先 clone 项目后，先试试用 npm run new 指令创建一个新组件，看看我们的一个组件包含了哪些东西。要理解源码的话就自己边改代码边测试效果吧。<br>淀粉提问：怎么看待Vue添加redux,而又保留双向绑定的数据方式？<br>Element开发团队：不太明白想问什么。<br>淀粉提问：国际化网站怎么做的，是每种语言对应一个页面吗，还是统一的一个页面？<br>Element开发团队：Element 的主页是一个 SPA，每种语言对应了一个 .vue 文件，而这些 .vue 文件是通过一个统一的模板和语言配置文件生成出来的。<br>淀粉提问：请问会推出专门针对移动端的Vue2组件库吗？<br>Element开发团队：目前没有将 Element 移植到移动端的计划。不过，我们已经有一套移动端组件库了：<a href="https://github.com/ElemeFE/mint-ui" target="_blank" rel="external">https://github.com/ElemeFE/mint-ui</a> ，它有两个版本，分别兼容 Vue 1.x 和 2.0。<br>淀粉提问：写在 Vue 文件中的 MarkDown 输出在哪里？这并不是显示效果的一部分呀？<br>Element开发团队：Vue 和 MarkDown 的结合，我们是自己做了一个 vue-markdown-loader, 作用是将 MarkDown 文件转成 Vue 组件（生成的文件在插件的 .cache 目录里），最后通过 vue-loader 处理。可以去看看这个 loader 的源码就明白了。<br>淀粉提问：既然是基于Vue了，那么Element还有继续的必要吗？而且目前框架那么多，Vue也得到了人的认可。Element以后得生态如何保证？毕竟还只有目前饿了么一个团队在用。<br>Element开发团队：不太清楚“Element还有继续的必要”是什么意思，据我们在 Gitter 对用户的了解，现在已经有不少用户将 Element 实用到他们公司的产品开发里。Element 的生态发展除了我们团队本身以外还需要依靠开源的力量来进行优化和发展。<br>淀粉提问：在组件开发中,有对复用性很高的业务组件做过积累吗？如果做过～是怎么维护这些业务组件的？也是同逻辑组件的维护方法一样吗？<br>Element开发团队：组件开发中会不断收到各种的功能需求的反馈，通过 GitHub 仓库 issue 来推动我们组件的功能更新和维护。不太清楚“逻辑组件”的含义，Element 里除了按钮这样特殊的组件外都是带有逻辑的。<br>淀粉提问：请问将常见的jq插件或者说jq动效写成Vue组件的过程中有什么不顺畅的地方吗？<br>Element开发团队：在组件开发过程中没有参考任何 jq 插件的动效。实际上基于 mvvm 框架下的组件库开发相对于 jq 是轻松很多的，因为你不需要手动地处理事件绑定和视图的更新。<br>淀粉提问：分享的文档是否有些陈旧没有更新，Vue 目前已经不是 RC阶段了。<br>Element开发团队：文档中说「开发时」Vue 还处于 RC 阶段，主要指的是今年的八九月份，那时 Vue 每更新一个 RC 版本，我们就跟着做一遍测试，然后发现几个 bug 的情景还历历在目。Vue 2.0 是上个月正式发布的，我们也在今天发布了 Element 的正式版。<br>淀粉提问：有没有模板可以参考？<br>Element开发团队：有，看这里：<a href="https://github.com/ElementUI/element-starter。如果熟悉" target="_blank" rel="external">https://github.com/ElementUI/element-starter。如果熟悉</a> cooking 或 laravel，我们也提供了相应的模板：<a href="https://github.com/ElementUI/element-cooking-starter" target="_blank" rel="external">https://github.com/ElementUI/element-cooking-starter</a> 、 <a href="https://github.com/ElementUI/element-in-laravel-starter" target="_blank" rel="external">https://github.com/ElementUI/element-in-laravel-starter</a> 。<br>淀粉提问：Element的开发者都是饿了么前端团队的吗，团队外的开发者占多少？<br>Element开发团队：是的。不过自从 Element 开源以来，社区出现了一批热心用户，他们也贡献了自己的代码。所有贡献者可以从这里看到：<a href="https://github.com/ElemeFE/element/graphs/contributors" target="_blank" rel="external">https://github.com/ElemeFE/element/graphs/contributors</a> 。<br>淀粉提问：几年前，不计算Gzip 90kb的jQuery遭到了人们的嫌弃：太大了，还是用原生吧。 几年后，开启Gzip后 仍有300kb的基于React的项目，人们觉得：区区300kb而已，算很小了。巨型库的概念流行后，人们似乎忘了啪啪啪在脸上有多疼。你怎么看？<br>Element开发团队：这几年网速已经提升不少，同时前端项目的复杂度也变得越来越高。比起库的体积，可能现在开发效率才是开发者所关心的。<br>淀粉提问：Element这套组件和Ant Design感觉有点类似，是否有借鉴过他们的设计？<br>Element开发团队：有借鉴过，我们不仅借鉴过 AntDesign，国内外大大小小的 Design Language 都有借鉴学习。很多信息前人已经总结过，我们希望可以快速的获得这些知识，以便更快的走到前方去探索更前沿的设计。<br>淀粉提问：感谢分享。目前有没有优秀应用案例可以分享？<br>Element开发团队：目前我们还没有精力去收集整理使用了 Element 的项目，不过按照最近一段时间在 Gitter 里讨论看到了一些开发者分享的项目链接，完成质量还是挺高的。过段时间我们会在 issue 里开始征集大家使用 Element 组件库的作品链接做分享。<br>淀粉提问：如何定制CSS，是覆盖还是改源码？改了源码如果Element版本更新之后 样式就没了？<br>Element开发团队：可以用 element-theme 主题自定义工具，或者直接下载 element-theme-default 主题包自己修改主题。如果只是简单的修改，建议直接覆盖样式。<br>淀粉提问：您好，我是个初学者，看不大懂编程，初学要做前端，应该先从哪开始入手学习？<br>Element开发团队：freecodecamp 和 codecademy 都是很好的入门途径。<br>淀粉提问：在技术选型的时候，基于什么考虑，选择了Vue，而不是React？<br>Element开发团队：和 React 相比，我们公司前端使用 Vue 的更多。为了照顾到大多数人，我们选用 Vue 作为 Element 的框架。<br>淀粉提问：我在写 Vue 的组件通信中，也发现事件比较好用但不容易被控制，因此一般是给自定义事件加上命名空间，如 “$dispatch(‘AComponent::rotate’, 90)，”Element 团队有这样的实践吗？<br>Element开发团队：在 Element 的组件中对组件通信这一块并没有用到全局的 event bug，而是通过dispatch和broadcast来进行相互依赖的组件间的通信。虽然Vue2.0里弃用了$dispatch和$broadcast的api，但我们自己在组件库中封装了一遍。<br>淀粉提问：Element 团队使用 Vuex 时的一些具体情景是什么？<br>Element开发团队： Element 没有用到 Vuex 的情景。<br>淀粉提问：后续是否会开放一些常见业务组件，比如城市选择等？<br>Element开发团队：与后台业务关联很大的组件应该不会直接开放，不过这个组件如果能解决类似的其他问题，我们会抽离业务属性将之作为「基础组件」开放出来。城市选择只用了比较基础的 Select 组合而已。<br>淀粉提问：Element 在做动画效果这个方向上有些什么成绩呢？<br>Element开发团队：动画效果方面我们还没有人力去探索和研究，主要精力还是放在业务系统的搭建上。<br>嘉宾简介</p>
+<p>Element 开发团队<br>照片从左到右依次为：<br>FuryBean、cinwell、杨奕、曾海平、敖天羽、Fishpaw、Fredddli、梓非徐</p>
+<p>Element 开发团队由饿了么 UED 的设计师和大前端的工程师组成，他们协作开发了 Element ——一套基于 Vue 2.0 的桌面端组件库。<br>今日荐文</p>
+<p>Vue相关内容推荐：<br><a href="http://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484393&idx=1&sn=142b8e37dfc94de07be211607e468030&chksm=9723612ba054e83db6622a891287af119bb63708f1b7a09aed9149d846c9428ad5abbb822294&scene=21#wechat_redirect" target="_blank" rel="external">Vue作者尤雨溪：Vue 2.0，渐进式前端解决方案</a><br><a href="http://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484389&idx=1&sn=cb976780e7382f651c846c6931fcc547&chksm=97236127a054e8310c1a803cdb1224113e45f93e34ece00b11a5fc2b875ac0f56127576e1ec9&scene=21#wechat_redirect" target="_blank" rel="external">Vue 2.0 快速上手指南</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484329&idx=1&sn=f79da7c92cda7352c8a651f459ef4172&chksm=9723616ba054e87df94522a9c67de26c9ac1f2532198506f47f9c589070d4c530a66ed37dd70&scene=21#wechat_redirect" target="_blank" rel="external">更轻更快的Vue.js 2.0与其他框架对比</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzIwNjQwMzUwMQ==&mid=2247484192&idx=1&sn=37457e1b3507f983400aea912594335a&scene=21#wechat_redirect" target="_blank" rel="external">Vue.js作者尤雨溪加盟Weex项目担任技术顾问</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/17/终端命令大全介绍/" rel="next" title="终端命令大全介绍">
+                <i class="fa fa-chevron-left"></i> 终端命令大全介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.jpg"
+               alt="zhangke" />
+          <p class="site-author-name" itemprop="name">zhangke</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录下日常的点点滴滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qinsmoon-kz" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ZK-0817" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangke</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
