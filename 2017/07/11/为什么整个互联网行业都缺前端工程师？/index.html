@@ -1,0 +1,786 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="#现在，几乎整个互联网行业都缺前端工程师，不仅在刚起步的创业公司，对上市公司乃至巨头这个问题也一样存在。没错，优秀的前端工程师简直比大熊猫还稀少。 　　每天，HR群都有人在吐槽招不到前端工程师。实话说对这些需求，Betty也无能为力，因为在供不应求的前端招聘市场上，优秀的前端工程师才是有话语权的那一方。不仅在国内的互联网行业，在国外，前端工程师一样是需求旺盛、供不应求的香饽饽。">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么整个互联网行业都缺前端工程师？">
+<meta property="og:url" content="https://godky.github.io/2017/07/11/为什么整个互联网行业都缺前端工程师？/index.html">
+<meta property="og:site_name" content="张轲的博客">
+<meta property="og:description" content="#现在，几乎整个互联网行业都缺前端工程师，不仅在刚起步的创业公司，对上市公司乃至巨头这个问题也一样存在。没错，优秀的前端工程师简直比大熊猫还稀少。 　　每天，HR群都有人在吐槽招不到前端工程师。实话说对这些需求，Betty也无能为力，因为在供不应求的前端招聘市场上，优秀的前端工程师才是有话语权的那一方。不仅在国内的互联网行业，在国外，前端工程师一样是需求旺盛、供不应求的香饽饽。">
+<meta property="og:updated_time" content="2017-07-11T13:48:29.298Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么整个互联网行业都缺前端工程师？">
+<meta name="twitter:description" content="#现在，几乎整个互联网行业都缺前端工程师，不仅在刚起步的创业公司，对上市公司乃至巨头这个问题也一样存在。没错，优秀的前端工程师简直比大熊猫还稀少。 　　每天，HR群都有人在吐槽招不到前端工程师。实话说对这些需求，Betty也无能为力，因为在供不应求的前端招聘市场上，优秀的前端工程师才是有话语权的那一方。不仅在国内的互联网行业，在国外，前端工程师一样是需求旺盛、供不应求的香饽饽。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://godky.github.io/2017/07/11/为什么整个互联网行业都缺前端工程师？/"/>
+
+
+
+
+
+  <title> 为什么整个互联网行业都缺前端工程师？ | 张轲的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d1c2480aa6dab59c34724f2431da243";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张轲的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Learn by doing!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://godky.github.io/2017/07/11/为什么整个互联网行业都缺前端工程师？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张轲的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                为什么整个互联网行业都缺前端工程师？
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T21:38:15+08:00">
+                2017-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#现在，几乎整个互联网行业都缺前端工程师，不仅在刚起步的创业公司，对上市公司乃至巨头这个问题也一样存在。没错，优秀的前端工程师简直比大熊猫还稀少。</p>
+<p>　　每天，HR群都有人在吐槽招不到前端工程师。实话说对这些需求，Betty也无能为力，因为在供不应求的前端招聘市场上，优秀的前端工程师才是有话语权的那一方。不仅在国内的互联网行业，在国外，前端工程师一样是需求旺盛、供不应求的香饽饽。</p>
+<a id="more"></a>
+<p>　　举个例子，根据indeed.com抓取的数千家网站的职位显示：目前前端的热门岗位——“HTML5”是需求增长最快的开发岗位，在所有开发职位中排名第一，MongoDB和iOS紧随其后位列第二、第三。</p>
+<p>　　可见，HTML5可以说是最热门的前端岗位了，在2010年和2014年底有两次爆发性增长，现在在美国的岗位需求甚至超过了iOS。所以市场上优秀的前端工程师相对较缺少，是一个世界性难题。</p>
+<h2 id="原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应"><a href="#原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应" class="headerlink" title="原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应"></a>原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应</h2><p>　　可能很多人认为前端开发和Web开发类似，而Web开发已经有20多年的历史，所以前端并不是一个新领域。然而，前端工程师的概念中的“接口技术实现和用户体验作为一个专业的工作领域”，却无疑是很新的。大概几年前，前端开发的技术增长迅猛，如下图所示：</p>
+<p>　　过去几年前端工程师的可视化增长趋势 by Google Trends</p>
+<p>　　15年或更久以前，Web的可视化设计和技术实现所需要的资源是平均分配的。随着网站的发展——网站不仅是一个登录页面，工程资源的需求越来越明显。人们开始专门学习网站专用的JS、后端技术、UX、数据库，甚至系统设计。</p>
+<p>　　今天，一个像AirBnB/Facebook/Quora的Web应用，投入的工程资源比设计资源多得多。换句话说，如今，做出网页的视觉设计比技术实现要更快，所以当今的web需求要求更多的工程师供应。</p>
+<p>　　现在，一位合格的前端工程师，必须对视觉设计有兴趣(或者乐于做一个受虐狂▼)。</p>
+<p>　　很显然，要处理大量的Web应用程序需求，技术任务就要进行分类，以便于多人同时处理网站请求。事实上现在已经不可能一个人快速地解决所有的技术细节了。</p>
+<p>　　现在还有一类人是独自处理一个Web应用程序的所有问题，即”全栈工程师”，但是优秀的全栈工程师同样如大熊猫一般数量稀少。</p>
+<p>　　现在，一个创业公司想要成功，几乎要覆盖一个Web应用程序的诸多技术方面：前端、后台、DBA、运营等。虽然已经有一些服务可以让企业购买登陆页面的前端模块和组件;但是如果你想要创造一些真正的Web应用程序，除了求助前端工程师，别无他法，就像你要创立一个品牌你也绕不开请一位设计师一样。</p>
+<h2 id="原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单"><a href="#原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单" class="headerlink" title="原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单"></a>原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单</h2><p>　　大多人都认为前端开发是一个“相对于其他模块来说更简单的领域”，在他们心中的前端工程师是这样工作的：<br>　　把Photoshop文件、图片或者线框放进一个网页;<br>　　偶尔设计Photoshop文件、图片或者线框;<br>　　用JS编程，为网页制作动画、过渡效果;<br>　　用HTML和CSS编程，确定网页的内容和形式。<br>　　事实上，前端工程师在做的是：<br>　　在设计师和工程师之间创建可视化的语言;<br>　　用可视化的设计，定义一组代表内容、品牌和功能的组件;<br>　　为Web应用程序的公约、框架、需求、可视化的语言和规格设定底线;<br>　　定义Web应用程序的设备、浏览器、屏幕、动画的范围;<br>　　开发一个质量保证指南来确保品牌忠诚度、代码质量、产品标准;<br>　　为Web应用程序设定适当的行距、字体、标题、图标、余粮、填充等等;<br>　　为Web应用程序设定多种分辨率的图像，设备为主的实体模型，同时维护设计指南;<br>　　用account semantics、accessibility、SEO、schemas、microformats 标记Web应用程序;<br>　　用一种友好的，消耗小的，设备和客户端感知的方式连接API，获取内容;<br>　　开发客户端代码来显示流畅的动画、过渡、延迟加载、交互、应用工作流程，大多数时间用来考虑渐进增强和向后兼容的标准;<br>　　保证后台连接安全，采取跨地资源共享(CORS)的程序考虑，防止跨站点脚本(XSS)和跨站点请求伪造(CSRF );<br>　　最重要的是，尽管有严格的期限、利益相关者的要求，以及设备的限制，无论现在还是将来永远是“客户第一”。<br>　　为了实现上述目标，前端工程师采用了从可视化到编程的多种工具 ，甚至有时要照顾市场、 UX 到内容tweakes等等。</p>
+<h2 id="原因三：大量糟糕前端工程师的存在，扰乱了市场"><a href="#原因三：大量糟糕前端工程师的存在，扰乱了市场" class="headerlink" title="原因三：大量糟糕前端工程师的存在，扰乱了市场"></a>原因三：大量糟糕前端工程师的存在，扰乱了市场</h2><p>　　这或许是难以招到优秀前端工程师最明显的原因。由于前端工程师的入门门槛非常低，JS、CSS、HTML并不是很难入门掌握的语言，似乎只要花一点时间，谁都可以通过网上教程和书本学会它，前端工程师市场就是被这些浅尝辄止的家伙搞坏的。<br>　　糟糕的前端工程师是这样做事的：<br>　　滥用JS库，因为他们实际上并不了JS的内部(e.g. 一切都用jQuery);<br>　　滥用JS插件，抄别人的代码哪怕自己根本读不懂(e.g.jQuery.doParallaxPls.js);<br>　　给Web应用程序添加CSS框架，却只用到CSS/JS的5%，没有看到任何的需求、设计或者比较和评价;<br>　　认为只要添加了CSS框架，网站就可以“有求必应”;<br>　　一边在说着“响应式Web设计”，却对服务器端技术一无所知;<br>　　用CSS编程时不管预处理器、命名规范等，却用不合适的selector/ids/magic numbers等;<br>　　忽视表现、内存泄露(并不理解内存泄露的真正含义)，不会检测代码;<br>　　不会用指标衡量一个产品，或者这种指标旨在自己的电脑、浏览器、设备有效;<br>　　忽视软件技术。<br>　　要知道，入门容易精通难，计算机和软件的基础对你用JS或浏览器编程都非常重要。Web可能是最有影响力的平台和环境之一，在那里执行的程序必须被小心对待。一位优秀的前端工程师不仅要考虑Web技术和语言，并且还要了解所有不同的组件、系统和概念。<br>　　以下是优秀的前端工程师在即时面对普通的任务也会做的事情(这才是市场急需的前端)：<br>　　DNS解析、使用CDN和关于multiple Hostnames as part of resources request;<br>　　HTTP Headers (Expires, Cache-Control, If-Modified-Since);<br>　　Steve Souders的所有规则(High Performance Websites);<br>　　如何解决PageSpeed, YSlow, Chrome Dev Tools Audit, Chrome Dev Tools Timeline显示的所有问题;<br>　　何时把任务传到服务器和客户端;<br>　　缓存，预取和负荷技术的使用;<br>　　Native JS，知道何时从头开始做，何时查找别人的代码，同时可以评估这样做的优缺点; 　　modern MVC Javascript libraries (e.g. AngularJS, EmberJS, ReactJS), graphic libraries (e.g. D3, SnapSVG), DOM manipulation libraries (e.g. jQuery, Zepto), lazy loading or package management libraries (e.g. RequireJS, CommonJS), task managers (e.g. Grunt, Gulp), package managers (e.g. Bower, Componentjs)and testing (e.g. Protractor, Selenium)的相关知识和用法;<br>　　CSS标准、modern conventions、 strategies (e.g. BEM, SMACSS, OOCSS)的知识和用法;<br>　　JS的电脑知识(内存管理，单线程的性质，垃圾收集算法，超时，范围，提升，模式)。<br>　　换句话说，如果说精通HTML+CSS+JS，了解后端知识，只是60分的合格前端;那么要想成为受追捧、拿高薪的80分优秀前端，要对业务需求和、架构设计有真正的运用;而100分的顶级前端，则必须要能够兼顾技术和设计，更接近“以前端开发为主的全栈工程师”了。<br>　　市场不是缺少前端，而是缺少优秀的前端工程师<br>　　现在，前端工程师终于前所未有的在Web中占有了一席之地。随着多设备、浏览器和Web标准的演变革命，前端正在成为兼顾逻辑、性能、交互、体验的综合性岗位。<br>　　虽然现在互联网行业普遍缺少前端工程师，但是我们相信越来越多的人将会加入前端的大军。不仅是因为大多数前端工作提供的优渥薪水和办公环境，也是因为Web中的前端编程变得越来越有挑战和意义。<br>　　最后，分享一组3~4月的100offer拍卖数据，给前端们鼓鼓劲：<br>　　前端工程师人均收获8.2个面试机会，已入职的前端工程师平均薪资涨幅达39%。其中，前端offer之王共收获47个offer，最高offer薪水38k*16 ，开自某土豪电商。<br>　　加油吧，前端!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/行业/" rel="tag"># 行业</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/开启3d加速提升页面性能/" rel="next" title="开启3d加速提升页面性能">
+                <i class="fa fa-chevron-left"></i> 开启3d加速提升页面性能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="zhangke" />
+          <p class="site-author-name" itemprop="name">zhangke</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/godky" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ZK-0817" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://kz618.wordpress.com" target="_blank" title="blog">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  blog
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应"><span class="nav-number">1.</span> <span class="nav-text">原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单"><span class="nav-number">2.</span> <span class="nav-text">原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因三：大量糟糕前端工程师的存在，扰乱了市场"><span class="nav-number">3.</span> <span class="nav-text">原因三：大量糟糕前端工程师的存在，扰乱了市场</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangke</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
