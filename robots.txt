@@ -1,0 +1,18 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /2017/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+
+Disallow: /lib/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+
+Sitemap: http://kzhang.site/sitemap.xml
+Sitemap: http://kzhang.site/baidusitemap.xml
