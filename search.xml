@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[10招打通js任督二脉【转】]]></title>
+    <url>%2F2017%2F07%2F13%2F10%E6%8B%9B%E6%89%93%E9%80%9Ajs%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%89%2F</url>
+    <content type="text"><![CDATA[简单回调12345678910111213141516function foo()&#123; console.log(this.a);&#125;function doFoo(fn)&#123; fn();&#125;function doFoo2(o)&#123; o.foo();&#125;var obj = &#123; a: 2, foo: foo&#125;;var a = "I'm an a";doFoo(obj.foo);doFoo2(obj); 分析 在Javascript中，this指向函数 执行时的当前对象，而非声明环境有。执行doFoo的时候执行环境就是doFoo函数，执行环境为全局。执行doFoo2时是在对象内部调用函数，this指针指向该对象。 结果 I&#39;m an a2 用apply改变函数作用域1234567891011121314function foo(somthing)&#123; console.log(this.a, somthing);&#125;function bind(fn, obj)&#123; return function()&#123; return fn.apply(obj, arguments); &#125;&#125;var obj = &#123; a:2&#125;var bar = bind(foo, obj);var b = bar(3);console.log(b); 分析 apply、call、bind都有个作用就是改变作用域，这里用apply将foo函数的作用域指向obj对象，同时传入参数。 再简单分析一下bind函数内部的嵌套，执行bind函数的时候返回的是一个匿名函数，所以执行bar(3)的时候实际上是执行的bind内部的匿名函数，返回的是之前传入的foo函数的执行结果。 函数没有返回值的情况下默认返回undefined。 结果 2 3undefined new关键字123456function foo(a,b)&#123; this.val = a+b;&#125;var bar = foo.bind(null, 'p1');var baz = new bar('p2');console.log(baz.val); 分析 bind函数的第一个参数为null代表作用域不变，后面的不定参数将会和函数本身的参数按次序进行绑定，绑定之后执行函数只能从未绑定的参数开始传值。 结果 p1p2 自执行函数1234567function foo()&#123; console.log(this.a);&#125;var a = 2;var o = &#123;a:3,foo:foo&#125;;var p = &#123;a:4&#125;;(p.foo=o.foo)(); 分析 经常可以看到这样的代码123(function()&#123; //...&#125;)() 这种代码通常是创建一个立即执行的函数同时避免污染全局变量。很少有人去关注赋值语句执行之后会返回什么结果，其实就是返回当前值。也就是说当括号内执行完赋值之后，返回的是o对象中的foo函数。函数的执行环境中有一个a对象，嗯，就是它了~ 答案 2 变量属性12345var a = [];a[0] = 1;a['foobar'] = 2;console.log(a.length);console.log(a.foobar); 分析 当一个变量被声明后，扩充其属性并不会改变原数据类型。 结果 12 精度问题123var a = 'foo';a[1] = 'O';console.log(0.1+0.2==0.3||a); 分析 当操作小数时请小心，js的小数计算并不精确，所以上面的判断是false。 字符串变量是常量。 结果 foo 命名提升12345678foo();var foo = 0;function foo()&#123; console.log(1);&#125;foo = function()&#123; console.log(2);&#125;; 分析 声明的变量和命名函数都会被提升到代码的最前面，只不过声明的变量的赋值语句在代码中的位置不变。所以上面这段代码应该被理解为：123456789var foo;function foo()&#123; console.log(1);&#125;foo();foo = 0;foo = function()&#123; console.log(2);&#125;; 结果 1 思考12345678910foo();var foo = 0;function foo()&#123; console.log(1);&#125;foo();foo = function()&#123; console.log(2);&#125;;foo(); 上面代码的结果： 1报错 作用域1234567891011foo();var a = true;if(a)&#123; function foo()&#123; console.log('a'); &#125;&#125; else &#123; function foo()&#123; console.log('b'); &#125;&#125; 分析 javascript并不是以代码段为作用域，而是以函数。再根据命名提升的原则，所以这段代码应该是这样的：1234567891011function foo()&#123; console.log('a');&#125;function foo()&#123; console.log('b');&#125;foo();var a = true;if(a)&#123;&#125; else &#123;&#125; 结果 b 闭包陷阱12345for(var i=1;i&amp;lt;=5;i++)&#123; setTimeout(function()&#123; console.log(i); &#125;, i*1000);&#125; 分析 闭包有个重要的作用就是，在内层函数引用外层函数定义的变量时，外层函数的变量不会被会被持久化。这里有个隐藏陷阱就是for循环结束之后i仍然自增了1。 结果 66666 伪闭包123456789function foo()&#123; console.log(a);&#125;function bar () &#123; var a = 3; foo();&#125;var a = 2;bar(); 分析 闭包是函数的嵌套定义，而不是函数的嵌套调用。 结果 2 思考 如何输出3？123456789function bar () &#123; function foo()&#123; console.log(a); &#125; var a = 3; foo();&#125;var a = 2;bar();]]></content>
+      <categories>
+        <category>code</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[为什么整个互联网行业都缺前端工程师？]]></title>
     <url>%2F2017%2F07%2F11%2F%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%B4%E4%B8%AA%E4%BA%92%E8%81%94%E7%BD%91%E8%A1%8C%E4%B8%9A%E9%83%BD%E7%BC%BA%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[现在，几乎整个互联网行业都缺前端工程师，不仅在刚起步的创业公司，对上市公司乃至巨头这个问题也一样存在。没错，优秀的前端工程师简直比大熊猫还稀少。 每天，HR群都有人在吐槽招不到前端工程师。实话说对这些需求，Betty也无能为力，因为在供不应求的前端招聘市场上，优秀的前端工程师才是有话语权的那一方。不仅在国内的互联网行业，在国外，前端工程师一样是需求旺盛、供不应求的香饽饽。 举个例子，根据indeed.com抓取的数千家网站的职位显示：目前前端的热门岗位——“HTML5”是需求增长最快的开发岗位，在所有开发职位中排名第一，MongoDB和iOS紧随其后位列第二、第三。 可见，HTML5可以说是最热门的前端岗位了，在2010年和2014年底有两次爆发性增长，现在在美国的岗位需求甚至超过了iOS。所以市场上优秀的前端工程师相对较缺少，是一个世界性难题。 原因一：前端相对来说是一个新领域，当今的web需求要求更多的工程师供应 可能很多人认为前端开发和Web开发类似，而Web开发已经有20多年的历史，所以前端并不是一个新领域。然而，前端工程师的概念中的“接口技术实现和用户体验作为一个专业的工作领域”，却无疑是很新的。大概几年前，前端开发的技术增长迅猛，如下图所示： 过去几年前端工程师的可视化增长趋势 by Google Trends 15年或更久以前，Web的可视化设计和技术实现所需要的资源是平均分配的。随着网站的发展——网站不仅是一个登录页面，工程资源的需求越来越明显。人们开始专门学习网站专用的JS、后端技术、UX、数据库，甚至系统设计。 今天，一个像AirBnB/Facebook/Quora的Web应用，投入的工程资源比设计资源多得多。换句话说，如今，做出网页的视觉设计比技术实现要更快，所以当今的web需求要求更多的工程师供应。 现在，一位合格的前端工程师，必须对视觉设计有兴趣(或者乐于做一个受虐狂▼)。 很显然，要处理大量的Web应用程序需求，技术任务就要进行分类，以便于多人同时处理网站请求。事实上现在已经不可能一个人快速地解决所有的技术细节了。 现在还有一类人是独自处理一个Web应用程序的所有问题，即”全栈工程师”，但是优秀的全栈工程师同样如大熊猫一般数量稀少。 现在，一个创业公司想要成功，几乎要覆盖一个Web应用程序的诸多技术方面：前端、后台、DBA、运营等。虽然已经有一些服务可以让企业购买登陆页面的前端模块和组件;但是如果你想要创造一些真正的Web应用程序，除了求助前端工程师，别无他法，就像你要创立一个品牌你也绕不开请一位设计师一样。 原因二：对前端，普遍存在巨大的误解，其实前端一点也不简单 大多人都认为前端开发是一个“相对于其他模块来说更简单的领域”，在他们心中的前端工程师是这样工作的： 把Photoshop文件、图片或者线框放进一个网页; 偶尔设计Photoshop文件、图片或者线框; 用JS编程，为网页制作动画、过渡效果; 用HTML和CSS编程，确定网页的内容和形式。 事实上，前端工程师在做的是： 在设计师和工程师之间创建可视化的语言; 用可视化的设计，定义一组代表内容、品牌和功能的组件; 为Web应用程序的公约、框架、需求、可视化的语言和规格设定底线; 定义Web应用程序的设备、浏览器、屏幕、动画的范围; 开发一个质量保证指南来确保品牌忠诚度、代码质量、产品标准; 为Web应用程序设定适当的行距、字体、标题、图标、余粮、填充等等; 为Web应用程序设定多种分辨率的图像，设备为主的实体模型，同时维护设计指南; 用account semantics、accessibility、SEO、schemas、microformats 标记Web应用程序; 用一种友好的，消耗小的，设备和客户端感知的方式连接API，获取内容; 开发客户端代码来显示流畅的动画、过渡、延迟加载、交互、应用工作流程，大多数时间用来考虑渐进增强和向后兼容的标准; 保证后台连接安全，采取跨地资源共享(CORS)的程序考虑，防止跨站点脚本(XSS)和跨站点请求伪造(CSRF ); 最重要的是，尽管有严格的期限、利益相关者的要求，以及设备的限制，无论现在还是将来永远是“客户第一”。 为了实现上述目标，前端工程师采用了从可视化到编程的多种工具 ，甚至有时要照顾市场、 UX 到内容tweakes等等。 原因三：大量糟糕前端工程师的存在，扰乱了市场 这或许是难以招到优秀前端工程师最明显的原因。由于前端工程师的入门门槛非常低，JS、CSS、HTML并不是很难入门掌握的语言，似乎只要花一点时间，谁都可以通过网上教程和书本学会它，前端工程师市场就是被这些浅尝辄止的家伙搞坏的。 糟糕的前端工程师是这样做事的： 滥用JS库，因为他们实际上并不了JS的内部(e.g. 一切都用jQuery); 滥用JS插件，抄别人的代码哪怕自己根本读不懂(e.g.jQuery.doParallaxPls.js); 给Web应用程序添加CSS框架，却只用到CSS/JS的5%，没有看到任何的需求、设计或者比较和评价; 认为只要添加了CSS框架，网站就可以“有求必应”; 一边在说着“响应式Web设计”，却对服务器端技术一无所知; 用CSS编程时不管预处理器、命名规范等，却用不合适的selector/ids/magic numbers等; 忽视表现、内存泄露(并不理解内存泄露的真正含义)，不会检测代码; 不会用指标衡量一个产品，或者这种指标旨在自己的电脑、浏览器、设备有效; 忽视软件技术。 要知道，入门容易精通难，计算机和软件的基础对你用JS或浏览器编程都非常重要。Web可能是最有影响力的平台和环境之一，在那里执行的程序必须被小心对待。一位优秀的前端工程师不仅要考虑Web技术和语言，并且还要了解所有不同的组件、系统和概念。 以下是优秀的前端工程师在即时面对普通的任务也会做的事情(这才是市场急需的前端)： DNS解析、使用CDN和关于multiple Hostnames as part of resources request; HTTP Headers (Expires, Cache-Control, If-Modified-Since); Steve Souders的所有规则(High Performance Websites); 如何解决PageSpeed, YSlow, Chrome Dev Tools Audit, Chrome Dev Tools Timeline显示的所有问题; 何时把任务传到服务器和客户端; 缓存，预取和负荷技术的使用; Native JS，知道何时从头开始做，何时查找别人的代码，同时可以评估这样做的优缺点; modern MVC Javascript libraries (e.g. AngularJS, EmberJS, ReactJS), graphic libraries (e.g. D3, SnapSVG), DOM manipulation libraries (e.g. jQuery, Zepto), lazy loading or package management libraries (e.g. RequireJS, CommonJS), task managers (e.g. Grunt, Gulp), package managers (e.g. Bower, Componentjs)and testing (e.g. Protractor, Selenium)的相关知识和用法; CSS标准、modern conventions、 strategies (e.g. BEM, SMACSS, OOCSS)的知识和用法; JS的电脑知识(内存管理，单线程的性质，垃圾收集算法，超时，范围，提升，模式)。 换句话说，如果说精通HTML+CSS+JS，了解后端知识，只是60分的合格前端;那么要想成为受追捧、拿高薪的80分优秀前端，要对业务需求和、架构设计有真正的运用;而100分的顶级前端，则必须要能够兼顾技术和设计，更接近“以前端开发为主的全栈工程师”了。 市场不是缺少前端，而是缺少优秀的前端工程师 现在，前端工程师终于前所未有的在Web中占有了一席之地。随着多设备、浏览器和Web标准的演变革命，前端正在成为兼顾逻辑、性能、交互、体验的综合性岗位。 虽然现在互联网行业普遍缺少前端工程师，但是我们相信越来越多的人将会加入前端的大军。不仅是因为大多数前端工作提供的优渥薪水和办公环境，也是因为Web中的前端编程变得越来越有挑战和意义。 最后，分享一组3~4月的100offer拍卖数据，给前端们鼓鼓劲： 前端工程师人均收获8.2个面试机会，已入职的前端工程师平均薪资涨幅达39%。其中，前端offer之王共收获47个offer，最高offer薪水38k*16 ，开自某土豪电商。 加油吧，前端!]]></content>
@@ -18,6 +29,9 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[underscore分析]]></title>
@@ -26,6 +40,9 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>源码分析</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[sublime常用快捷键]]></title>
@@ -34,6 +51,9 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>sublime</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[markdown示例【转】]]></title>
@@ -42,14 +62,20 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[经验技巧【转】]]></title>
     <url>%2F2017%2F05%2F20%2F%E7%BB%8F%E9%AA%8C%E6%8A%80%E5%B7%A7%2F</url>
     <content type="text"><![CDATA[链接：https://www.zhihu.com/question/36426051/answer/76031743 重构是程序员的主力技能。 工作日志能提升脑容量。 先用profiler调查，才有脸谈优化。 注释贵精不贵多。杜绝大姨妈般的“例注”。漫山遍野的碎碎念注释，实际就是背景噪音。 普通程序员+google=超级程序员。 单元测试总是合算的。 不要先写框架再写实现。最好反过来，从原型中提炼框架。 代码结构清晰，其它问题都不算事儿。 好的项目作风硬派，一键测试，一键发布，一键部署; 烂的项目生性猥琐，口口相传，不立文字，神神秘秘。 编码不要畏惧变化，要拥抱变化。 常充电。程序员只有一种死法：土死的。 编程之事，隔离是方向，起名是关键，测试是主角，调试是补充，版本控制是后悔药。 一行代码一个兵。形成建制才能有战斗力。单位规模不宜过大，千人班，万人排易成万人坑。 重构/优化/修复Bug，同时只能作一件。 简单模块注意封装，复杂模块注意分层。 人脑性能有限，整洁胜于杂乱。读不懂的代码，尝试整理下格式; 不好用的接口，尝试重新封装下。 迭代速度决定工作强度。想多快好省，就从简化开发流程，加快迭代速度开始。 忘掉优化写代码。过早优化等同恶意破坏；忘掉代码作优化。优化要基于性能测试，而不是纠结于字里行间。 最好的工具是纸笔;其次好的是markdown。 leader问任务时间，若答不上来，可能是任务拆分还不够细。 宁可多算一周，不可少估一天。过于“乐观”容易让boss受惊吓。 最有用的语言是English。其次的可能是Python。 百闻不如一见。画出结果，一目了然。调试耗时将大大缩短。 资源、代码应一道受版本管理。资源匹配错误远比代码匹配错误更难排查。 不要基于想象开发， 要基于原型开发。原型的价值是快速验证想法，帮大家节省时间。 序列化首选明文文本 。诸如二进制、混淆、加密、压缩等等有需要时再加。 编译器永远比你懂微观优化。只能向它不擅长的方向努力。 不要定过大、过远、过细的计划。即使定了也没有用。 至少半数时间将花在集成上。时间，时间，时间总是不够。 与主流意见/方法/风格/习惯相悖时，先检讨自己最可靠。出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升; 如果你的bug被别人揪出来…..呵呵，那你会很被动～≧﹏≦ 不知怎么选技术书时就挑薄的。起码不会太贵，且你能看完。 git是最棒的。简单，可靠，免费。 仅对“可预测的非理性”抛断言。 Log要写时间与分类。并且要能重定向输出。 注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。 造轮子是很好的锻炼方法。前提是你见过别的轮子。 code review最好以小组/结对的形式。对业务有一定了解，建议会更有价值（但不绝对）。而且不会成为负担。管理员个人review则很容易成team的瓶颈。 提问前先做调研。问不到点上既被鄙视，又浪费自己的时间。 永远别小看程序媛(╯3╰)]]></content>
       <categories>
-        <category>code</category>
+        <category>随笔</category>
       </categories>
+      <tags>
+        <tag>行业</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[饿了么基于Vue 2.0的通用组件库开发之路]]></title>
@@ -58,6 +84,9 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[终端命令大全介绍]]></title>
@@ -66,5 +95,8 @@
       <categories>
         <category>code</category>
       </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
   </entry>
 </search>
