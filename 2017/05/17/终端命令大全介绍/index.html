@@ -66,7 +66,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="终端命令大全介绍" />
+  <meta name="keywords" content="linux常用命令" />
 
 
 
@@ -82,17 +82,17 @@
 
 
 
-<meta name="description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
-<meta name="keywords" content="终端命令大全介绍">
+<meta name="description" content="1. 更改档案拥有者命令 : chown [-cfhvR] [--help] [--version] user[:group] file...  功能 : 更改文件或者文件夹的拥有者  参数格式 :  　　   user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)  　　       -c : 若该档案拥有者确实已经更改，才显示其更改动作">
+<meta name="keywords" content="linux常用命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="终端命令大全介绍">
+<meta property="og:title" content="linux常用命令">
 <meta property="og:url" content="http://kzhang.site/2017/05/17/终端命令大全介绍/index.html">
 <meta property="og:site_name" content="张轲的博客">
-<meta property="og:description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
-<meta property="og:updated_time" content="2017-07-13T02:28:17.220Z">
+<meta property="og:description" content="1. 更改档案拥有者命令 : chown [-cfhvR] [--help] [--version] user[:group] file...  功能 : 更改文件或者文件夹的拥有者  参数格式 :  　　   user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)  　　       -c : 若该档案拥有者确实已经更改，才显示其更改动作">
+<meta property="og:updated_time" content="2017-07-24T17:38:15.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="终端命令大全介绍">
-<meta name="twitter:description" content="OSX 的文件系统OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。你在桌面上看到的硬盘都挂在 /Volumes 下。比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。根目录位置是 / 核心 Mach_kernel 就在这">
+<meta name="twitter:title" content="linux常用命令">
+<meta name="twitter:description" content="1. 更改档案拥有者命令 : chown [-cfhvR] [--help] [--version] user[:group] file...  功能 : 更改文件或者文件夹的拥有者  参数格式 :  　　   user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)  　　       -c : 若该档案拥有者确实已经更改，才显示其更改动作">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>终端命令大全介绍 | 张轲的博客</title>
+  <title>linux常用命令 | 张轲的博客</title>
   
 
 
@@ -345,7 +345,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">终端命令大全介绍</h2>
+          <h2 class="post-title" itemprop="name headline">linux常用命令</h2>
         
 
         <div class="post-meta">
@@ -397,7 +397,7 @@
 
           
           
-             <span id="/2017/05/17/终端命令大全介绍/" class="leancloud_visitors" data-flag-title="终端命令大全介绍">
+             <span id="/2017/05/17/终端命令大全介绍/" class="leancloud_visitors" data-flag-title="linux常用命令">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -425,15 +425,347 @@
       
 
       
-        <h2 id="OSX-的文件系统"><a href="#OSX-的文件系统" class="headerlink" title="OSX 的文件系统"></a>OSX 的文件系统</h2><p>OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。<br>你在桌面上看到的硬盘都挂在 /Volumes 下。<br>比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？<br>在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。<br>根目录位置是 / 核心 Mach_kernel 就在这里，<br>驱动所在位置 /Systme/Library/Extensions<br>用户文件夹位置 /User/用户名<br>桌面的位置 /User/用户名/Desktop<br>文件通配符为星号 *<br>注意：在 Unix系统中是区别大小写字符的，A.txt 不等于 a.txt。<br>根目录标志 / 不是可有可无，cd /System 表示转到跟目录下的System中，而cd System 表示转到当前目录下的 System中<br><a id="more"></a><br>——————————————————————————————————————————————<br>如何进入命令行操作模式<br>再图形界面下，用finder 打开 应用程序 》实用程序》终端<br>如果连图形界面都进不去了（比如安错了显示驱动），开机时按 F8，用－s参数启动，然后输入命令 mount -uw / </p>
-<p>获得权限<br>为了防止误操作破坏系统，再用户状态下时没有权限操作系统重要文件的，所以先要取得root权限<br>sudo －s<br>然后输入密码，输入密码时没有任何回显，连星号都没有，只管输完回车就行了。<br>—————————————————————————————————————————————— </p>
-<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>列出文件<br>ls 参数 目录名<br>例: 想看看跟目录下有什么，<br>ls /<br>想看看驱动目录下有什么，<br>ls /System/Library/Extensions<br>参数 -w 显示中文，-l 详细信息， -a 包括隐藏文件<br>转换目录<br>cd<br>例：想到驱动目录下溜达一圈<br>cd /System/Library/Extensions<br>建立新目录<br>mkdir 目录名<br>例：在驱动目录下建一个备份目录 backup<br>mkdir /System/Library/Extensions/backup<br>在桌面上建一个备份目录 backup<br>mkdir /User/用户名/Desktop/backup<br>拷贝文件<br>cp 参数 源文件 目标文件<br>例：想把桌面的Natit.kext 拷贝到驱动目录中<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions<br>参数R表示对目录进行递归操作，kext在图形界面下看起来是个文件，实际上是个文件夹。<br>把驱动目录下的所有文件备份到桌面backup<br>cp -R /System/Library/Extensions/* /User/用户名/Desktop/backup<br>删除文件<br>rm 参数 文件<br>例：想删除驱动的缓存<br>rm -rf /System/Library/Extensions.kextcache<br>rm -rf /System/Library/Extensions.mkext<br>参数－rf 表示递归和强制，千万要小心使用，如果执行了 rm -rf / 你的系统就全没了 </p>
-<p>移动文件<br>mv 文件<br>例：想把AppleHDA.Kext 移到桌面<br>mv /System/Library/Extensions/AppleHDA.kext /User/用户名/Desktop<br>想把AppleHDA.Kext 移到备份目录中<br>mv /System/Library/Extensions/AppleHDA.kext /System/Library/Extensions/backup<br>更改文件权限<br>chmod 参数 权限 文件<br>例：把驱动目录下所有文件设定到root读写，其他用户只读<br>chmod -R 755 /System/Library/Extensions<br>参数R 表示递归，755表示各用户的权限<br>更改文件属主<br>chown 参数 用户:组 文件<br>例：把驱动目录下的所有文件属主改成根用户<br>chown -R root:wheel /System/Library/Extensions<br>参数R 表示递归操作<br>修复整个系统中文件的权限<br>diskutil repairpermissions /<br>严格的说这不是一个unix 命令，而是osx一个软件，记得修改或添加的驱动就执行一次。<br>文本编辑<br>nano 文件名<br>例：编辑natit Info.plist<br>nano /System/Library/Extensions/Natit.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>另一个文本编辑软件是 vi，操作有些古怪，熟了是非常好用的，而且在所有类Unix系统中都它，走遍天下都不怕了。<br>运行脚本命令<br>sh 脚本文件名<br>例 修改驱动后所有需要的操作存成一个脚本，以后修改了驱动后只要运行一次这个脚本就可以了，方便吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1. 终端中运行nano /clean </div><div class="line">2. 把下列代码粘贴到 nano 中 </div><div class="line">rm -rf /System/Library/Extensions.kextcache </div><div class="line">rm -rf /System/Library/Extensions.mkext </div><div class="line">chown -R root:wheel /System/Library/Extensions </div><div class="line">chmod -R 755 /System/Library/Extensions </div><div class="line">diskutil repairpermissions / </div><div class="line">kextcache -k /System/Library/Extensions/ </div><div class="line">3. Ctrl ＋O 存盘，Ctrl＋X 退出 </div><div class="line">4. 以后只要动了驱动，就在终端中运行一次 sh /clean</div></pre></td></tr></table></figure></p>
-<p>———————————————————————————————————— </p>
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>用 Tab 键自动补齐命令<br>比如想到 /System 目录中去，输入 cd /Sy 然后按一下Tab 键，命令就会自动补齐成 cd /System<br>操作带名字中带有空格的文件和目录<br>空格在命令中写成 空格， 比如要进入 My Documents，命令为 cd My Documents<br>查看命令的详细帮助<br>man 命令名<br>比如要看看 ls 命令的详细用法，执行 man ls<br>———————————————————————————————————— </p>
-<h2 id="典型操作流程"><a href="#典型操作流程" class="headerlink" title="典型操作流程"></a>典型操作流程</h2><p>(假设已经制作好清理脚本，记得每次操作前 sudo -s 获得系统权限)<br>假设下载了一个显卡驱动 Natit.zip，在桌面解压得到了一个Natit.kext，该怎么做呢？<br>为了保险起见，先把所有驱动备份了再说<br>mkdir /User/用户名/Desktop/backup 在桌面上建立备份文件夹<br>cp -R /System/Library/Extensions/* /User/用户名/Desktop/backup 备份驱动文件<br>现在可以安心安装了<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions 把它 拷贝到系统驱动目录位置<br>sh /clean 执行清理脚本，操作完成<br>重新开机失败，进不去桌面了，发现不应该安这个驱动，怎么恢复呢？<br>开机按F8，用 -s 参数启动<br>执行 mount -uw /<br>rm -rf /User/用户名/Desktop/Natit.kext 删除这个驱动<br>sh /clean 执行清理脚本，操作完成<br>重启，回到原先状态了，不死心啊，没有特效怎么行呢，又听说需要修改 Natit的 Info. plist 文件才行，好，再来<br>cp -R /User/用户名/Desktop/Natit.kext /System/Library/Extensions 把它 拷贝到系统驱动目录位置<br>nano /System/Library/Extensions/Natit.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>sh /clean 执行清理脚本，操作完成<br>重启，这回对了，显卡特效都有了，该弄声卡了，天知道会出什么事，得把现有成果保护好。<br>mkdir /User/用户名/Desktop/gooddrivers 专为有效驱动建个目录<br>cp -R /System/Library/Extensions/Natit.kext /User/用户名/Desktop/gooddrivers 备份<br>这个声卡要求把 AppleHDA.kext 删除和编辑 AppleAzaliaAudio.kext中的Info.plist 文件，谁知道以后会不会还用AppleHDA呢，不如暂时禁用吧。<br>mkdir /System/Library/Extensions/disabled 建立个禁用目录<br>mv /System/Library/Extensions/AppleHDA.kext /System/Library/Extensions/disabled 移动过去<br>nano /System/Library/Extensions/Natit.kext/AppleAzaliaAudio.kext/Info.plist<br>编辑完成后 用 Ctrl ＋O 存盘，Ctrl＋X 退出<br>sh /clean 执行清理脚本，操作完成<br>成功了，也把修改好的驱动备份一下把<br>复制内容到剪贴板代码: </p>
-<h2 id="以下是unix的命令行-供参考"><a href="#以下是unix的命令行-供参考" class="headerlink" title="以下是unix的命令行,供参考"></a>以下是unix的命令行,供参考</h2><p>目录操作<br>命令名<br>功能描述<br>使用举例<br>mkdir<br>创建一个目录<br>mkdir dirname<br>rmdir<br>删除一个目录<br>rmdir dirname<br>mvdir<br>移动或重命名一个目录<br>mvdir dir1 dir2<br>cd<br>改变当前目录<br>cd dirname<br>pwd<br>显示当前目录的路径名<br>pwd<br>ls<br>显示当前目录的内容<br>ls -la<br>dircmp<br>比较两个目录的内容<br>dircmp dir1 dir2<br>文件操作<br>命令名<br>功能描述<br>使用举例<br>cat<br>显示或连接文件<br>cat filename<br>pg<br>分页格式化显示文件内容<br>pg filename<br>more<br>分屏显示文件内容<br>more filename<br>od<br>显示非文本文件的内容<br>od -c filename<br>cp<br>复制文件或目录<br>cp file1 file2<br>rm<br>删除文件或目录</p>
+        <h3 id="1-更改档案拥有者"><a href="#1-更改档案拥有者" class="headerlink" title="1. 更改档案拥有者"></a>1. 更改档案拥有者</h3><pre><code>命令 : chown [-cfhvR] [--help] [--version] user[:group] file... 
+功能 : 更改文件或者文件夹的拥有者 
+参数格式 : 
+　　   user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group) 
+</code></pre><p>　　       -c : 若该档案拥有者确实已经更改，才显示其更改动作<br>　　       -f : 若该档案拥有者无法被更改也不要显示错误讯息<br>　　       -h : 只对于连结(link)进行变更，而非该 link 真正指向的档案<br>　　       -v : 显示拥有者变更的详细资料<br>　       　-R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更) </p>
+<pre><code>例如：chown -R oracle:oinstall /oracle/u01/app/oracle  
+      更改目录拥有者为oracle 
+</code></pre><a id="more"></a>
+<h3 id="2-修改权限"><a href="#2-修改权限" class="headerlink" title="2. 修改权限"></a>2. 修改权限</h3><pre><code>命令：chmod (change mode) 
+功能：改变文件的读写和执行权限。有符号法和八进制数字法。 
+选项：(1)符号法： 
+      命令格式：chmod {u|g|o|a}{+|-|=}{r|w|x} filename 
+              u (user)   表示用户本人。 
+              g (group)  表示同组用户。 
+              o (oher)   表示其他用户。 
+              a (all)    表示所有用户。 
+              +          用于给予指定用户的许可权限。 
+              -          用于取消指定用户的许可权限。 
+              =          将所许可的权限赋给文件。 
+              r (read)   读许可，表示可以拷贝该文件或目录的内容。 
+              w (write)  写许可，表示可以修改该文件或目录的内容。 
+              x (execute)执行许可，表示可以执行该文件或进入目录。 
 
+      (2)八进制数字法：   
+          命令格式：chmod abc file 
+          其中a,b,c各为一个八进制数字，分别表示User、Group、及Other的权限。 
+                  4 (100)    表示可读。 
+                  2 (010)    表示可写。 
+                  1 (001)    表示可执行。 
+          若要rwx属性则4+2+1=7； 
+          若要rw-属性则4+2=6； 
+          若要r-x属性则4+1=5。 
+
+            例如：# chmod a+rx filename 
+                    让所有用户可以读和执行文件filename。 
+                  # chmod go-rx filename 
+                    取消同组和其他用户的读和执行文件filename的权限。 
+                  # chmod 741 filename 
+                    让本人可读写执行、同组用户可读、其他用户可执行文件filename。 
+          # chmod -R 755 /home/oracle 
+            递归更改目录权限，本人可读写执行、同组用户可读可执行、其他用户可读可执行 
+</code></pre><h3 id="3-修改文件日期"><a href="#3-修改文件日期" class="headerlink" title="3. 修改文件日期"></a>3. 修改文件日期</h3><pre><code>命令：touch 
+格式：touch filenae 
+功能：改变文件的日期，不对文件的内容做改动，若文件不存在则建立新文件。 
+例如：% touch file 
+</code></pre><h3 id="4-链接文件"><a href="#4-链接文件" class="headerlink" title="4. 链接文件"></a>4. 链接文件</h3><pre><code>命令：ln (link) 
+格式：ln [option] filename linkname 
+      ln [option] directory pathname 
+功能：为文件或目录建立一个链。其中，filename和directory是源文件名和 
+      源目录名；linkname和pathname分别表示与源文件或源目录名相链接的 
+      文件或目录。 
+选项：-s  为文件或目录建立符号链接。不加-s表示为文件或目录建立硬链接 
+注释：链接的目地在于，对一个文件或目录赋予两个以上的名字，使其可以出 
+      现在不同的目录中，既可以使文件或目录共享，又可以节省磁盘空间。 
+例如：% ln -s filename linkname 
+</code></pre><h3 id="5-显示日期"><a href="#5-显示日期" class="headerlink" title="5. 显示日期"></a>5. 显示日期</h3><pre><code>命令：date 
+例如：% date 
+</code></pre><h3 id="6-显示日历"><a href="#6-显示日历" class="headerlink" title="6. 显示日历"></a>6. 显示日历</h3><pre><code>命令：cal (calendar) 
+格式：cal [month] year 
+功能：显示某年内指定的日历 
+例如：% cal 1998  
+</code></pre><h3 id="7-显示文件头部"><a href="#7-显示文件头部" class="headerlink" title="7. 显示文件头部"></a>7. 显示文件头部</h3><pre><code>命令：head 
+格式：head [option] filename 
+功能：显示文件的头部 
+选项：缺省  显示文件的头10行。 
+      -i    显示文件的开始 i行。 
+例如：% head filename 
+</code></pre><h3 id="8-显示文件尾部"><a href="#8-显示文件尾部" class="headerlink" title="8. 显示文件尾部"></a>8. 显示文件尾部</h3><pre><code>命令：tail 
+格式：tail [option] filename 
+功能：显示文件的尾部 
+选项：缺省  显示文件的末10行。 
+      -i    显示文件最后 i行。 
+      +i    从文件的第i行开始显示。 
+例如：% tail filename 
+</code></pre><h3 id="9-显示用户标识"><a href="#9-显示用户标识" class="headerlink" title="9. 显示用户标识"></a>9. 显示用户标识</h3><pre><code>命令：id 
+格式：id [option] [user] 
+功能：显示用户标识及用户所属的所有组。 
+选项：-a 显示用户名、用户标识及用户所属的所有组 
+注释： 
+例如：% id username 
+</code></pre><h3 id="10-查看当前登录的用户"><a href="#10-查看当前登录的用户" class="headerlink" title="10. 查看当前登录的用户"></a>10. 查看当前登录的用户</h3><pre><code>命令：users 
+</code></pre><h3 id="11-显示都谁登录到机器上"><a href="#11-显示都谁登录到机器上" class="headerlink" title="11. 显示都谁登录到机器上"></a>11. 显示都谁登录到机器上</h3><pre><code>命令：who 
+格式：who 
+功能：显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。 
+例如：% who 
+</code></pre><h3 id="12-显示当前终端上的用户名"><a href="#12-显示当前终端上的用户名" class="headerlink" title="12. 显示当前终端上的用户名"></a>12. 显示当前终端上的用户名</h3><pre><code>命令：whoami 
+格式：whoami 
+功能：显示出当前终端上使用的用户。 
+例如：% whoami 
+</code></pre><h3 id="13-寻找文件"><a href="#13-寻找文件" class="headerlink" title="13. 寻找文件"></a>13. 寻找文件</h3><pre><code>命令：find 
+格式：find pathname [option] expression 
+功能：在所给的路经名下寻找符合表达式相匹配的文件。 
+选项：-name     表示文件名 
+      -user     用户名，选取该用户所属的文件 
+      -size     按大小查找，以block为单位，一个block是512B 
+      -mtime n  按最后一次修改时间查找，选取n天内被修改的文件 
+      -perm     按权限查找 
+      -type     按文件类型查找 
+      -atime    按最后一次访问时间查找 
+
+例如：% find ./ -name &apos;*abc*&apos; -print 
+</code></pre><h3 id="14-搜索文件中匹配符"><a href="#14-搜索文件中匹配符" class="headerlink" title="14. 搜索文件中匹配符"></a>14. 搜索文件中匹配符</h3><pre><code>命令：grep 
+格式：grep [option] pattern filenames 
+功能：逐行搜索所指定的文件或标准输入，并显示匹配模式的每一行。 
+选项：-i    匹配时忽略大小写 
+        -v 找出模式失配的行 
+
+例如：% grep -i &apos;java*&apos; ./test/run.sh 
+</code></pre><h3 id="15-统计文件字数"><a href="#15-统计文件字数" class="headerlink" title="15. 统计文件字数"></a>15. 统计文件字数</h3><pre><code>命令：wc [option] filename 
+功能：统计文件中的文件行数、字数和字符数。 
+选项：-l 统计文件的行数 
+      -w 统计文件的单词数 
+      -c 统计文件的字符数 
+注释：若缺省文件名则指标准输入 
+例如：% wc -c ./test/run.sh 
+</code></pre><h3 id="16-显示磁盘空间"><a href="#16-显示磁盘空间" class="headerlink" title="16. 显示磁盘空间"></a>16. 显示磁盘空间</h3><pre><code>命令：df (disk free) 
+格式：df [option] 
+功能：显示磁盘空间的使用情况，包括文件系统安装的目录名、块设备名、总 
+      字节数、已用字节数、剩余字节数占用百分比。 
+选项： 
+    -a：显示全部的档案系统和各分割区的磁盘使用情形 
+    -i：显示i -nodes的使用量 
+    -k：大小用k来表示 (默认值) 
+    -t：显示某一个档案系统的所有分割区磁盘使用量 
+    -x：显示不是某一个档案系统的所有分割区磁盘使用量 
+    -T：显示每个分割区所属的档案系统名称 
+    -h: 表示使用「Human-readable」的输出，也就是在档案系统大小使用 GB、MB 等易读的格式。 
+    注释： 
+    例如：% df -hi 
+</code></pre><h3 id="17-查询档案或目录的磁盘使用空间"><a href="#17-查询档案或目录的磁盘使用空间" class="headerlink" title="17. 查询档案或目录的磁盘使用空间"></a>17. 查询档案或目录的磁盘使用空间</h3><pre><code>命令：du (disk usage) 
+格式：du [option] [filename] 
+功能：以指定的目录下的子目录为单位，显示每个目录内所有档案所占用的磁盘空间大小 
+选项： 
+    -a：显示全部目录和其次目录下的每个档案所占的磁盘空间 
+    -b：大小用bytes来表示 (默认值为k bytes) 
+    -c：最后再加上总计 (默认值) 
+    -s：只显示各档案大小的总合 
+    -x：只计算同属同一个档案系统的档案 
+    -L：计算所有的档案大小 
+    -h: 表示档案系统大小使用 GB、MB 等易读的格式。 
+        例如：% du -a 
+              % du -sh /etc 只显示该目录的总合 
+              % du /etc | sort -nr | more 统计结果用sort 指令进行排序,sort 的参数 -nr 表示要以数字排序法进行反向排序。
+</code></pre><h3 id="18-显示进程"><a href="#18-显示进程" class="headerlink" title="18. 显示进程"></a>18. 显示进程</h3><pre><code>命令：ps 
+格式：ps [option] 
+功能：显示系统中进程的信息。包括进程ID、控制进程终端、执行时间和命令。 
+选项： 
+    -a 显示所有进程信息 
+    -U uidlist 列出这个用户的所有进程 
+    e 显示当前运行的每一个进程信息 
+    -f 显示一个完整的列表 
+    -x 显示包括没有终端控制的进程状况 。 
+    注释： 
+    例如：% ps -ef 
+            % ps -aux 然后再利用一个管道符号导向到grep去查找特定的进程,然后再对特定的进程进行操作。 
+</code></pre><h3 id="19-终止进程"><a href="#19-终止进程" class="headerlink" title="19. 终止进程"></a>19. 终止进程</h3><pre><code>命令：kill 
+格式：kill [option] pid 
+功能：向指定的进程送信号或终止进程。kill指令的用途是送一个signal给某一个process， 
+因为大部份送的都是用来杀掉 process 的 SIGKILL 或 SIGHUP ，因此称为 kill  
+选项：-9  强行终止进程 
+注释：pid标示进程号，可由ps命令得到。 
+例如：% kill -9 pid 
+你也可以用 kill -l 来察看可代替 signal 号码的数目字。kill 的详细情形请参阅 man kill。 
+</code></pre><h3 id="20-查看自己的IP地址"><a href="#20-查看自己的IP地址" class="headerlink" title="20. 查看自己的IP地址"></a>20. 查看自己的IP地址</h3><pre><code>命令：ifconfig 
+格式：ifconfig -a 
+</code></pre><h3 id="21-查看路由表"><a href="#21-查看路由表" class="headerlink" title="21. 查看路由表"></a>21. 查看路由表</h3><pre><code>命令：netstat 
+格式：netstat -rn 
+</code></pre><h3 id="22-远程登录"><a href="#22-远程登录" class="headerlink" title="22. 远程登录"></a>22. 远程登录</h3><pre><code>命令：telnet 
+格式：telnet hostname 
+</code></pre><h3 id="23-文件传输"><a href="#23-文件传输" class="headerlink" title="23. 文件传输"></a>23. 文件传输</h3><pre><code>命令：ftp (file transfer program) 
+格式：ftp hostname 
+功能：网络文件传输及远程操作。 
+选项：ftp命令： 
+       cd [dirname]  进入远程机的目录 
+       lcd [dirname] 设置本地机的目录 
+       dir/ls        显示远程的目录文件 
+       bin           以二进制方式进行传输 
+          asc           以文本文件方式进行传输 
+       get/mget      从远程机取一个或多个文件 
+       put/mput      向远程机送一个或多个文件 
+       prompt        打开或关闭多个文件传送时的交互提示 
+       close         关闭与远程机的连接 
+       quit          退出ftp 
+       !/exit ftp登陆状态下，!表示暂时退出ftp状态回到本地目录，exit表示返回ftp状态 
+        注释： 
+        例如：% ftp hostname 
+</code></pre><h3 id="24-查看自己的电子邮件"><a href="#24-查看自己的电子邮件" class="headerlink" title="24. 查看自己的电子邮件"></a>24. 查看自己的电子邮件</h3><pre><code>命令：mailx 
+格式：mailx 
+选项： 
+    delete  删除 
+    next    下一个 
+    quit    退出 
+    reply   回复    
+</code></pre><h3 id="25-回忆命令"><a href="#25-回忆命令" class="headerlink" title="25. 回忆命令"></a>25. 回忆命令</h3><pre><code>命令：history 
+格式：history 
+功能：帮助用户回忆执行过的命令。 
+选项： 
+注释： 
+例如：% history 
+</code></pre><h3 id="26-网上对话"><a href="#26-网上对话" class="headerlink" title="26. 网上对话"></a>26. 网上对话</h3><pre><code>命令：talk 
+格式：talk username 
+功能：在网上与另一用户进行对话。 
+选项： 
+注释：对话时系统把终端分为上下两部分，上半部显示自己键入信息，下半部 
+      显示对方用户键入的信息。键入delete或Ctrl+C则结束对话。 
+例如：% talk username 
+</code></pre><h3 id="27-允许或拒绝接受信息"><a href="#27-允许或拒绝接受信息" class="headerlink" title="27. 允许或拒绝接受信息"></a>27. 允许或拒绝接受信息</h3><pre><code>命令：mesg (message) 
+格式：mesg [n/y] 
+功能：允许或拒绝其它用户向自己所用的终端发送信息。 
+选项：n 拒绝其它用户向自己所用的终端写信息 
+      y 允许其它用户向自己所用的终端写信息（缺省值） 
+注释： 
+例如：% mesg n 
+</code></pre><h3 id="28-给其他用户写信息"><a href="#28-给其他用户写信息" class="headerlink" title="28. 给其他用户写信息"></a>28. 给其他用户写信息</h3><pre><code>命令：write 
+格式：write username [ttyname] 
+功能：给其他用户的终端写信息。 
+选项： 
+注释：若对方没有拒绝，两用户可进行交谈，键入EOF或Ctrl+C则结束对话。 
+例如：write username 
+</code></pre><h3 id="29-创建、修改、删除用户和群组"><a href="#29-创建、修改、删除用户和群组" class="headerlink" title="29. 创建、修改、删除用户和群组"></a>29. 创建、修改、删除用户和群组</h3><pre><code>a. 创建群组： 
+    例如： groupadd oinstall    创建群组名为oinstall的组 
+    groupadd -g 344 dba  
+    创建组号是344的组，此时在/etc/passwd文件中产生一个组ID（GID）是344的项目。 
+b. 修改群组： 
+    groupmod:该命令用于改变用户组帐号的属性 
+    groupmod –g 新的GID 用户组帐号名 
+    groupmod –n 新组名 原组名：此命令由于改变用户组的名称 
+
+c. 删除群组： 
+</code></pre><p>groupdel 组名：该命令用于删除指定的组帐号 </p>
+<pre><code>d. 新建用户： 
+    命令： useradd [－d home] [－s shell] [－c comment] [－m [－k template]] 
+    [－f inactive] [－e expire ] [－p passwd] [－r] name 
+    主要参数 
+    -c：加上备注文字，备注文字保存在passwd的备注栏中。　 
+    -d：指定用户登入时的启始目录。 
+    -D：变更预设值。 
+    -e：指定账号的有效期限，缺省表示永久有效。 
+    -f：指定在密码过期后多少天即关闭该账号。 
+    -g：指定用户所属的群组。 
+    -G：指定用户所属的附加群组。 
+    -m：自动建立用户的登入目录。 
+    -M：不要自动建立用户的登入目录。 
+    -n：取消建立以用户名称为名的群组。 
+    -r：建立系统账号。 
+    -s：指定用户登入后所使用的shell。 
+    -u：指定用户ID号。 
+
+    举例： # useradd -g oinstall -G dba oracle  创建Oracle用户 
+
+e. 删除用户 
+    命令： userdel 用户名 
+    删除指定的用户帐号 
+    userdel –r 用户名(userdel 用户名;rm 用户名)：删除指定的用户帐号及宿主目录 
+    例：#useradd -g root kkk //把kkk用户加入root组里 
+
+f. 修改用户 
+    命令： usermod
+    修改已有用户的信息 
+    usermod –l 旧用户名 新用户名： 修改用户名 
+    usermod –L 用户名： 用于锁定指定用户账号，使其不能登陆系统 
+    usermod –U 用户名： 对锁定的用户帐号进行解锁 
+    passwd –d 用户名： 使帐号无口令，即用户不需要口令就能登录系统 
+    例：#usermod -l user2 user1 //把用户user2改名为user1 
+</code></pre><h3 id="30-启动、关闭防火墙"><a href="#30-启动、关闭防火墙" class="headerlink" title="30. 启动、关闭防火墙"></a>30. 启动、关闭防火墙</h3><pre><code>永久打开或则关闭 
+chkconfig iptables on 
+chkconfig iptables off 
+即时生效：重启后还原 
+service iptables start 
+service iptables stop 
+或者： 
+/etc/init.d/iptables start 
+/etc/init.d/iptables stop 
+</code></pre><h3 id="31-启动VSFTP服务"><a href="#31-启动VSFTP服务" class="headerlink" title="31. 启动VSFTP服务"></a>31. 启动VSFTP服务</h3><pre><code>即时启动： /etc/init.d/vsftpd start 
+即时停止： /etc/init.d/vsftpd stop 
+
+开机默认VSFTP服务自动启动: 
+方法一:(常用\方便) 
+[root@localhost etc]# chkconfig --list|grep vsftpd ( 查看情况) 
+vsftpd          0:off   1:off   2:off   3:off   4:off   5:off   6:off 
+[root@localhost etc]# chkconfig vsftpd on  (执行ON设置) 
+或者:方法二: 
+修改文件 /etc/rc.local , 把行/usr/local/sbin/vsftpd &amp; 插入文件中，以实现开机自动启动。 
+</code></pre><h3 id="32-vi技巧"><a href="#32-vi技巧" class="headerlink" title="32. vi技巧"></a>32. vi技巧</h3><pre><code>a. 进入输入模式 
+
+新增 (append) 
+    a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。 A：从光标所在列最後面的地方开始新增资料。
+
+插入 (insert) 
+    i：从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。 
+    I ：从光标所在列的第一个非空白字元前面开始插入资料。 
+
+开始 (open) 
+    o ：在光标所在列下新增一列并进入输入模式。 
+    O: 在光标所在列上方新增一列并进入输入模式。 
+
+b. 退出vi 
+    在指令模式下键入:q,:q!,:wq或:x(注意:号），就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q 退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。 
+
+c. 删除与修改文件的命令： 
+    x：删除光标所在字符。 
+    dd ：删除光标所在的列。 
+    r ：修改光标所在字元，r 後接著要修正的字符。 
+    R：进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。 
+    s：删除光标所在字元，并进入输入模式。 
+    S：删除光标所在的列，并进入输入模式。 
+
+d. 屏幕翻滚类命令 
+    Ctrl+u: 向文件首翻半屏 
+    Ctrl+d: 向文件尾翻半屏 
+    Ctrl+f: 向文件尾翻一屏 
+    Ctrl＋b: 向文件首翻一屏 
+    nz: 将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。 
+
+e. 删除命令 
+    ndw或ndW: 删除光标处开始及其后的n-1个字 
+    do: 删至行首 
+    d$: 删至行尾 
+    ndd: 删除当前行及其后n-1行 
+    x或X: 删除一个字符，x删除光标后的，而X删除光标前的 
+    Ctrl+u: 删除输入方式下所输入的文本 
+
+f. 搜索及替换命令 
+    /pattern: 从光标开始处向文件尾搜索pattern 
+    ?pattern: 从光标开始处向文件首搜索pattern 
+    n: 在同一方向重复上一次搜索命令 
+    N: 在反方向上重复上一次搜索命令 
+    :s/p1/p2/g: 将当前行中所有p1均用p2替代 
+    :n1,n2s/p1/p2/g: 将第n1至n2行中所有p1均用p2替代 
+    :g/p1/s//p2/g: 将文件中所有p1均用p2替换 
+
+g. 复制，黏贴 
+    (1) 选定文本块，使用v进入可视模式；移动光标键选定内容 
+    (2) 复制选定块到缓冲区，用y；复制整行，用yy 
+    (3) 剪切选定块到缓冲区，用d；剪切整行用dd 
+    (4) 粘贴缓冲区中的内容，用p 
+
+h. 其他 
+    在同一编辑窗打开第二个文件，用:sp [filename] 
+    在多个编辑文件之间切换，用Ctrl+w 
+</code></pre>
       
     </div>
 
@@ -461,7 +793,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://kzhang.site/2017/05/17/终端命令大全介绍/" title="终端命令大全介绍">http://kzhang.site/2017/05/17/终端命令大全介绍/</a>
+      <a href="http://kzhang.site/2017/05/17/终端命令大全介绍/" title="linux常用命令">http://kzhang.site/2017/05/17/终端命令大全介绍/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -667,7 +999,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSX-的文件系统"><span class="nav-number">1.</span> <span class="nav-text">OSX 的文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">2.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小技巧"><span class="nav-number">3.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型操作流程"><span class="nav-number">4.</span> <span class="nav-text">典型操作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是unix的命令行-供参考"><span class="nav-number">5.</span> <span class="nav-text">以下是unix的命令行,供参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-更改档案拥有者"><span class="nav-number">1.</span> <span class="nav-text">1. 更改档案拥有者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-修改权限"><span class="nav-number">2.</span> <span class="nav-text">2. 修改权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-修改文件日期"><span class="nav-number">3.</span> <span class="nav-text">3. 修改文件日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-链接文件"><span class="nav-number">4.</span> <span class="nav-text">4. 链接文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-显示日期"><span class="nav-number">5.</span> <span class="nav-text">5. 显示日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-显示日历"><span class="nav-number">6.</span> <span class="nav-text">6. 显示日历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-显示文件头部"><span class="nav-number">7.</span> <span class="nav-text">7. 显示文件头部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-显示文件尾部"><span class="nav-number">8.</span> <span class="nav-text">8. 显示文件尾部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-显示用户标识"><span class="nav-number">9.</span> <span class="nav-text">9. 显示用户标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-查看当前登录的用户"><span class="nav-number">10.</span> <span class="nav-text">10. 查看当前登录的用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-显示都谁登录到机器上"><span class="nav-number">11.</span> <span class="nav-text">11. 显示都谁登录到机器上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-显示当前终端上的用户名"><span class="nav-number">12.</span> <span class="nav-text">12. 显示当前终端上的用户名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-寻找文件"><span class="nav-number">13.</span> <span class="nav-text">13. 寻找文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-搜索文件中匹配符"><span class="nav-number">14.</span> <span class="nav-text">14. 搜索文件中匹配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-统计文件字数"><span class="nav-number">15.</span> <span class="nav-text">15. 统计文件字数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-显示磁盘空间"><span class="nav-number">16.</span> <span class="nav-text">16. 显示磁盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-查询档案或目录的磁盘使用空间"><span class="nav-number">17.</span> <span class="nav-text">17. 查询档案或目录的磁盘使用空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-显示进程"><span class="nav-number">18.</span> <span class="nav-text">18. 显示进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-终止进程"><span class="nav-number">19.</span> <span class="nav-text">19. 终止进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-查看自己的IP地址"><span class="nav-number">20.</span> <span class="nav-text">20. 查看自己的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-查看路由表"><span class="nav-number">21.</span> <span class="nav-text">21. 查看路由表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-远程登录"><span class="nav-number">22.</span> <span class="nav-text">22. 远程登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-文件传输"><span class="nav-number">23.</span> <span class="nav-text">23. 文件传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-查看自己的电子邮件"><span class="nav-number">24.</span> <span class="nav-text">24. 查看自己的电子邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-回忆命令"><span class="nav-number">25.</span> <span class="nav-text">25. 回忆命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-网上对话"><span class="nav-number">26.</span> <span class="nav-text">26. 网上对话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-允许或拒绝接受信息"><span class="nav-number">27.</span> <span class="nav-text">27. 允许或拒绝接受信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-给其他用户写信息"><span class="nav-number">28.</span> <span class="nav-text">28. 给其他用户写信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-创建、修改、删除用户和群组"><span class="nav-number">29.</span> <span class="nav-text">29. 创建、修改、删除用户和群组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-启动、关闭防火墙"><span class="nav-number">30.</span> <span class="nav-text">30. 启动、关闭防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-启动VSFTP服务"><span class="nav-number">31.</span> <span class="nav-text">31. 启动VSFTP服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-vi技巧"><span class="nav-number">32.</span> <span class="nav-text">32. vi技巧</span></a></li></ol></div>
             
 
           </div>

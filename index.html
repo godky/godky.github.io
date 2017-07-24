@@ -1039,14 +1039,6 @@
 <p><code>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</code></p>
 <p><code>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</code></p>
 <p><code>Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。</code></p>
-<p><code>Ctrl+M 光标移动至括号内结束或开始的位置。</code></p>
-<p><code>Ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</code></p>
-<p><code>Ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</code></p>
-<p><code>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。</code></p>
-<p><code>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。</code></p>
-<p><code>Ctrl+K+0 展开所有折叠代码。</code></p>
-<p><code>Ctrl+← 向左单位性地移动光标，快速移动光标。</code></p>
-<p><code>Ctrl+→ 向右单位性地移动光标，快速移动光标。</code></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/27/sublime常用快捷键/#more" rel="contents">
@@ -1617,7 +1609,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/17/终端命令大全介绍/" itemprop="url">终端命令大全介绍</a></h2>
+                <a class="post-title-link" href="/2017/05/17/终端命令大全介绍/" itemprop="url">linux常用命令</a></h2>
         
 
         <div class="post-meta">
@@ -1669,7 +1661,7 @@
 
           
           
-             <span id="/2017/05/17/终端命令大全介绍/" class="leancloud_visitors" data-flag-title="终端命令大全介绍">
+             <span id="/2017/05/17/终端命令大全介绍/" class="leancloud_visitors" data-flag-title="linux常用命令">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1698,7 +1690,14 @@
 
       
         
-          <h2 id="OSX-的文件系统"><a href="#OSX-的文件系统" class="headerlink" title="OSX 的文件系统"></a>OSX 的文件系统</h2><p>OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，所以不在要有Windows 下的盘符概念。<br>你在桌面上看到的硬盘都挂在 /Volumes 下。<br>比如接上个叫做 USBHD的移动硬盘，桌面上会显示出一个硬盘图标，它实际在哪里呢？<br>在终端里执行 ls /Volumes/USBHD, 看看显示出的是不是这个移动硬盘的内容。<br>根目录位置是 / 核心 Mach_kernel 就在这里，<br>驱动所在位置 /Systme/Library/Extensions<br>用户文件夹位置 /User/用户名<br>桌面的位置 /User/用户名/Desktop<br>文件通配符为星号 *<br>注意：在 Unix系统中是区别大小写字符的，A.txt 不等于 a.txt。<br>根目录标志 / 不是可有可无，cd /System 表示转到跟目录下的System中，而cd System 表示转到当前目录下的 System中<br>
+          <h3 id="1-更改档案拥有者"><a href="#1-更改档案拥有者" class="headerlink" title="1. 更改档案拥有者"></a>1. 更改档案拥有者</h3><pre><code>命令 : chown [-cfhvR] [--help] [--version] user[:group] file... 
+功能 : 更改文件或者文件夹的拥有者 
+参数格式 : 
+　　   user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group) 
+</code></pre><p>　　       -c : 若该档案拥有者确实已经更改，才显示其更改动作<br>　　       -f : 若该档案拥有者无法被更改也不要显示错误讯息<br>　　       -h : 只对于连结(link)进行变更，而非该 link 真正指向的档案<br>　　       -v : 显示拥有者变更的详细资料<br>　       　-R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更) </p>
+<pre><code>例如：chown -R oracle:oinstall /oracle/u01/app/oracle  
+      更改目录拥有者为oracle 
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/17/终端命令大全介绍/#more" rel="contents">
