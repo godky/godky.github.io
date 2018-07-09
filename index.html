@@ -85,7 +85,7 @@
 <meta name="description" content="张轲(zhangke)的博客小站。记录生活的点点滴滴。生命不息，折腾不体，Learn by doing!。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="张轲的博客">
-<meta property="og:url" content="http://kzhang.site/index.html">
+<meta property="og:url" content="http://z98k.com/index.html">
 <meta property="og:site_name" content="张轲的博客">
 <meta property="og:description" content="张轲(zhangke)的博客小站。记录生活的点点滴滴。生命不息，折腾不体，Learn by doing!。">
 <meta name="twitter:card" content="summary">
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://kzhang.site/"/>
+  <link rel="canonical" href="http://z98k.com/"/>
 
 
 
@@ -328,7 +328,283 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/07/13/10招打通js任督二脉/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2018/04/11/react源码浅析-入口分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张轲的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/11/react源码浅析-入口分析/" itemprop="url">react源码浅析-入口分析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T22:55:32+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/11/react源码浅析-入口分析/" class="leancloud_visitors" data-flag-title="react源码浅析-入口分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先我们入口文件 ReactEntry.js 来看，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var ReactBaseClasses = require(&apos;ReactBaseClasses&apos;);</div><div class="line">var ReactChildren = require(&apos;ReactChildren&apos;);</div><div class="line">var ReactElement = require(&apos;ReactElement&apos;);</div><div class="line">var ReactVersion = require(&apos;ReactVersion&apos;);</div></pre></td></tr></table></figure></p>
+<p>var onlyChild = require(‘onlyChild’);<br>依赖模块：<br>• ReactBaseClasses<br>• ReactChildren<br>• ReactElement<br>• onlyChild<br>• ReactElementValidator<br>接着:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var createElement = ReactElement.createElement;</div><div class="line">var createFactory = ReactElement.createFactory;</div><div class="line">var cloneElement = ReactElement.cloneElement;</div><div class="line"></div><div class="line">if (__DEV__) &#123;</div><div class="line">  var ReactElementValidator = require(&apos;ReactElementValidator&apos;);</div><div class="line">  createElement = ReactElementValidator.createElement;</div><div class="line">  createFactory = ReactElementValidator.createFactory;</div><div class="line">  cloneElement = ReactElementValidator.cloneElement;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到在开发环境下提供了对组件的验证。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var React = &#123;</div><div class="line">  Children: &#123;</div><div class="line">    map: ReactChildren.map,</div><div class="line">    forEach: ReactChildren.forEach,</div><div class="line">    count: ReactChildren.count,</div><div class="line">    toArray: ReactChildren.toArray,</div><div class="line">    only: onlyChild,</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  Component: ReactBaseClasses.Component,</div><div class="line">  PureComponent: ReactBaseClasses.PureComponent,</div><div class="line">  unstable_AsyncComponent: ReactBaseClasses.AsyncComponent,</div><div class="line"></div><div class="line">  createElement: createElement,</div><div class="line">  cloneElement: cloneElement,</div><div class="line">  isValidElement: ReactElement.isValidElement,</div><div class="line"></div><div class="line">  createFactory: createFactory,</div><div class="line"></div><div class="line">  version: ReactVersion,</div><div class="line"></div><div class="line">  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: &#123;</div><div class="line">    ReactCurrentOwner: require(&apos;ReactCurrentOwner&apos;),</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面这些就是 React 提供的所有 API 了。<br>后续的文章会依次对这些 API 的实现进行解读。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/07/25/js-htmlencode函数，主要是编辑器中反转html代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张轲的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/25/js-htmlencode函数，主要是编辑器中反转html代码/" itemprop="url">js htmlencode函数，主要是编辑器中反转html代码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T15:56:49+08:00">
+                2017-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/25/js-htmlencode函数，主要是编辑器中反转html代码/" class="leancloud_visitors" data-flag-title="js htmlencode函数，主要是编辑器中反转html代码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>主要用途是编辑器中反转html代码.用的浏览器内部转换器实现转换，要领是动态创建一个容器标签元素，如DIV，将要转换的字符串设置为这个元素的innerText(ie支持)||textContent(火狐支持)，然后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串,显示的时候反过来就可以了（实际上显示的时候不消通过转换，直接赋值在div就可以正常显示的）。 </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/25/js-htmlencode函数，主要是编辑器中反转html代码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/07/13/10招打通js任督二脉/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -481,7 +757,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/07/11/为什么整个互联网行业都缺前端工程师？/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/07/11/为什么整个互联网行业都缺前端工程师？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -631,7 +907,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/06/07/开启3d加速提升页面性能/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/06/07/开启3d加速提升页面性能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -784,7 +1060,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/06/06/underscore分析/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/06/06/underscore分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -934,7 +1210,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/05/27/sublime常用快捷键/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/05/27/sublime常用快捷键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -1087,7 +1363,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/05/20/markdown示例/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/05/20/markdown示例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -1246,7 +1522,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/05/20/经验技巧/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/05/20/经验技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -1436,7 +1712,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/05/19/饿了么基于Vue 2.0的通用组件库开发之路/">
+    <link itemprop="mainEntityOfPage" href="http://z98k.com/2017/05/19/饿了么基于Vue 2.0的通用组件库开发之路/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangke">
@@ -1581,170 +1857,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kzhang.site/2017/05/17/linux常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangke">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="张轲的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/17/linux常用命令/" itemprop="url">linux常用命令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T17:32:34+08:00">
-                2017-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/05/17/linux常用命令/" class="leancloud_visitors" data-flag-title="linux常用命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="更改档案拥有者"><a href="#更改档案拥有者" class="headerlink" title="更改档案拥有者"></a>更改档案拥有者</h3><pre><code>命令 : chown [-cfhvR] [--help] [--version] user[:group] file... 
-功能 : 更改文件或者文件夹的拥有者 
-参数格式 : 
-    user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group) 
-    -c : 若该档案拥有者确实已经更改，才显示其更改动作 
-    -f : 若该档案拥有者无法被更改也不要显示错误讯息 
-    -h : 只对于连结(link)进行变更，而非该 link 真正指向的档案 
-    -v : 显示拥有者变更的详细资料 
-    -R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更) 
-
-    例如：chown -R oracle:oinstall /oracle/u01/app/oracle  
-          更改目录拥有者为oracle 
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/17/linux常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1790,7 +1909,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1812,7 +1931,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1831,15 +1950,6 @@
                     <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/ZK-0817" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  知乎
                 </a>
               </span>
             
@@ -1882,8 +1992,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
